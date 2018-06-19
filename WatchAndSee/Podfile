@@ -6,5 +6,7 @@ target 'WatchAndSee' do
   use_frameworks!
 
   pod 'SwiftLint'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
 end
