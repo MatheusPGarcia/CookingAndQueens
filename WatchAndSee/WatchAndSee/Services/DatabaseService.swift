@@ -18,6 +18,4 @@ class DatabaseService: NSObject {
     private override init() {
         ref = Database.database().reference()
     }
-
-
 }
