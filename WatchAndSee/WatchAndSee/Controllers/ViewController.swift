@@ -10,9 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var databaseManager: DatabaseService!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        databaseManager = DatabaseService.shared
+        databaseManager.createRecipeObject(recipeName: "Bolo Simples")
     }
 
     override func didReceiveMemoryWarning() {

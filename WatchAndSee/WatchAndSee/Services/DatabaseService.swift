@@ -11,13 +11,28 @@ import Firebase
 
 //Classe Singleton que será responsável pela movimentação no banco de dados
 class DatabaseService: NSObject {
-    static let shared = DatabaseService()
 
+    static var shared = DatabaseService()
     var ref: DatabaseReference!
+    var recipes = Recipes()
 
     private override init() {
+        super.init()
         ref = Database.database().reference()
     }
 
+    func createRecipeObject(recipeName: String) {
+        var ingredients: [String]
 
+        ref.child("Recipes").child(recipeName).child("Ingredientes").observeSingleEvent(of: .value) { snapshot in
+
+            guard let ingrDictionary = snapshot.value as? [String: Any] else {
+                print("deu merda")
+                return
+            }
+
+            print(ingrDictionary)
+        }
+
+    }
 }
