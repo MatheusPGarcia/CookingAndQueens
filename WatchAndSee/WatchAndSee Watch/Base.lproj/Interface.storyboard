@@ -14,9 +14,9 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target">
                     <items>
-                        <button width="1" alignment="left" title="Send Timer" id="HYT-Qc-GMQ">
+                        <button width="1" alignment="left" title="Enviar" id="HYT-Qc-GMQ">
                             <connections>
-                                <action selector="buttonSendTimerWasPressed" destination="AgC-eL-Hgc" id="kkJ-sz-PgK"/>
+                                <action selector="sendToiPhoneWasPressed" destination="AgC-eL-Hgc" id="kkJ-sz-PgK"/>
                             </connections>
                         </button>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="Dcq-I4-dkY">

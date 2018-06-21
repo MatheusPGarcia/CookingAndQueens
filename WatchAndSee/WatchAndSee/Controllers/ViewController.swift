@@ -13,84 +13,78 @@ class ViewController: UIViewController, WCSessionDelegate {
 
     @available(iOS 9.3, *)
     public func sessionDidDeactivate(_ session: WCSession) {
-        //Dummy Implementation
     }
 
     @available(iOS 9.3, *)
     public func sessionDidBecomeInactive(_ session: WCSession) {
-        //Dummy Implementation
     }
 
     @available(iOS 9.3, *)
     public func session(_ session: WCSession,
                         activationDidCompleteWith activationState: WCSessionActivationState,
                         error: Error?) {
-        //Dummy Implementation
     }
 
-    var totalTime = 0
-    @IBOutlet weak var timeLabel: UILabel!
+    var value = 0
+    var session: WCSession!
 
-    fileprivate let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
+    @IBOutlet weak var valueLabel: UILabel!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        configureWCSession()
-    }
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-
-        configureWCSession()
+        if WCSession.isSupported() {
+            session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    fileprivate func configureWCSession() {
-        session?.delegate = self
-        session?.activate()
+    fileprivate func updateLabel (value: Int) {
+        valueLabel.text = "\(value)"
     }
 
     internal func session(_ session: WCSession,
                           didReceiveApplicationContext applicationContext: [String: Any]) {
 
-        let time = applicationContext["Time"] as? Int
-        //Use this to update the UI instantaneously (otherwise, takes a little while)
-        DispatchQueue.main.async() {
+        let sessionValue = applicationContext["Value"] as? Int
 
-            guard let timeValue = time else { return }
+        DispatchQueue.main.async {
 
-            self.totalTime = timeValue
-            self.timeLabel.text = "time: \(self.totalTime)"
+            guard let safeValue = sessionValue else { return }
+
+            self.value = safeValue
+            self.updateLabel(value: self.value)
         }
-    }
-
-    @IBAction func sub(_ sender: UIButton) {
-
-        totalTime -= 1
-        self.timeLabel.text = "time: \(totalTime)"
-    }
-
-    @IBAction func add(_ sender: UIButton) {
-
-        totalTime += 1
-        self.timeLabel.text = "time: \(totalTime)"
-    }
-
-    @IBAction func enviarWasPressed(_ sender: UIButton) {
-        sendValue()
     }
 
     func sendValue() {
 
         do {
-            let time = ["Time": totalTime]
-            try session?.updateApplicationContext(time)
+            let valueToSend = ["Value": value]
+            try session.updateApplicationContext(valueToSend)
         } catch {
             print("error")
         }
+    }
+
+    @IBAction func subWasPressed(_ sender: UIButton) {
+
+        value -= 1
+        updateLabel(value: value)
+    }
+
+    @IBAction func addWasPressed(_ sender: UIButton) {
+
+        value += 1
+        updateLabel(value: value)
+    }
+
+    @IBAction func sendToWatchWasPressed(_ sender: UIButton) {
+        sendValue()
     }
 }

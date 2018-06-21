@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ox-06-bBy">
-                                <rect key="frame" x="166.5" y="323" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ox-06-bBy">
+                                <rect key="frame" x="182" y="323" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -29,21 +29,21 @@
                                 <rect key="frame" x="79" y="319" width="30" height="30"/>
                                 <state key="normal" title="-"/>
                                 <connections>
-                                    <action selector="sub:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Onk-Wd-kPd"/>
+                                    <action selector="subWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Onk-Wd-kPd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RF-We-5Vi">
                                 <rect key="frame" x="266.5" y="318" width="30" height="30"/>
                                 <state key="normal" title="+"/>
                                 <connections>
-                                    <action selector="add:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TKT-Rt-Uxl"/>
+                                    <action selector="addWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TKT-Rt-Uxl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2M-RB-uQA">
                                 <rect key="frame" x="166.5" y="485.5" width="42" height="30"/>
                                 <state key="normal" title="Enviar"/>
                                 <connections>
-                                    <action selector="enviarWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7UK-ua-LD4"/>
+                                    <action selector="sendToWatchWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7UK-ua-LD4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -61,7 +61,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="timeLabel" destination="3Ox-06-bBy" id="KeT-Pd-XYK"/>
+                        <outlet property="valueLabel" destination="3Ox-06-bBy" id="KeT-Pd-XYK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

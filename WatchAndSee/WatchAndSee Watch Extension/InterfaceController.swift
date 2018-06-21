@@ -10,27 +10,27 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-// swiftlint:disable all
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     @available(watchOS 2.2, *)
-    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        //Dummy Implementation
+    public func session(_ session: WCSession,
+                        activationDidCompleteWith activationState: WCSessionActivationState,
+                        error: Error?) {
     }
-    
-    var session : WCSession!
+
     var value = 0
+    var session: WCSession!
+
+    @IBOutlet var timeLabel: WKInterfaceLabel!
 
     override init() {
         super.init()
-        if (WCSession.isSupported()) {
+        if WCSession.isSupported() {
             session = WCSession.default
             session.delegate = self
             session.activate()
         }
     }
-
-    @IBOutlet var timeLabel: WKInterfaceLabel!
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -38,53 +38,56 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         timeLabel.setText("\(value)")
         // Configure interface objects here.
     }
-    
+
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
-    
+
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
 
-    func sendTimer() {
-
-        do {
-            let time = ["Time" : value]
-            try session.updateApplicationContext(time)
-        } catch {
-            print("error")
-        }
-    }
-
-    @IBAction func buttonSendTimerWasPressed() {
-        sendTimer()
-    }
-
-    @IBAction func subWasPressed() {
-        value = value - 1
-        timeLabel.setText("\(value)")
-    }
-
-    @IBAction func addWasPressed() {
-        value = value + 1
+    fileprivate func updateLabel (value: Int) {
         timeLabel.setText("\(value)")
     }
 
     internal func session(_ session: WCSession,
                           didReceiveApplicationContext applicationContext: [String: Any]) {
 
-        let time = applicationContext["Time"] as? Int
-        //Use this to update the UI instantaneously (otherwise, takes a little while)
-        DispatchQueue.main.async() {
+        let sessionValue = applicationContext["Value"] as? Int
 
-            guard let timeValue = time else { return }
+        DispatchQueue.main.async {
 
-            self.value = timeValue
-            self.timeLabel.setText("\(self.value)")
+            guard let safeValue = sessionValue else { return }
+
+            self.value = safeValue
+            self.updateLabel(value: self.value)
         }
     }
+
+    func sendValue() {
+
+        do {
+            let valueToSend = ["Value": value]
+            try session.updateApplicationContext(valueToSend)
+        } catch {
+            print("error")
+        }
+    }
+
+    @IBAction func subWasPressed() {
+        value -= 1
+        updateLabel(value: value)
+    }
+
+    @IBAction func addWasPressed() {
+        value +=  1
+        updateLabel(value: value)
+    }
+
+    @IBAction func sendToiPhoneWasPressed() {
+        sendValue()
+    }
 }
-// swiftlint:enable all
