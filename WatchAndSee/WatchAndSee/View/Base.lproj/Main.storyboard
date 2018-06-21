@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,11 +25,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tU-x8-3lz">
+                                <rect key="frame" x="79" y="319" width="30" height="30"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="sub:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Onk-Wd-kPd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RF-We-5Vi">
+                                <rect key="frame" x="266.5" y="318" width="30" height="30"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="add:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TKT-Rt-Uxl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2M-RB-uQA">
+                                <rect key="frame" x="166.5" y="485.5" width="42" height="30"/>
+                                <state key="normal" title="Enviar"/>
+                                <connections>
+                                    <action selector="enviarWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7UK-ua-LD4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Ox-06-bBy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1JA-kd-jBC"/>
+                            <constraint firstItem="o2M-RB-uQA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="79B-bo-qT9"/>
+                            <constraint firstItem="1RF-We-5Vi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" multiplier="1.5" id="8Gb-Pl-NhN"/>
+                            <constraint firstItem="o2M-RB-uQA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="DuV-UW-rAc"/>
                             <constraint firstItem="3Ox-06-bBy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J9S-wl-8pU"/>
+                            <constraint firstItem="1RF-We-5Vi" firstAttribute="centerY" secondItem="3Ox-06-bBy" secondAttribute="centerY" id="R6P-dp-tSS"/>
+                            <constraint firstItem="4tU-x8-3lz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.5" id="Srb-Aj-KJl"/>
+                            <constraint firstItem="4tU-x8-3lz" firstAttribute="centerY" secondItem="3Ox-06-bBy" secondAttribute="centerY" id="qIe-Of-dbr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -72,6 +72,19 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         value = value + 1
         timeLabel.setText("\(value)")
     }
-    
+
+    internal func session(_ session: WCSession,
+                          didReceiveApplicationContext applicationContext: [String: Any]) {
+
+        let time = applicationContext["Time"] as? Int
+        //Use this to update the UI instantaneously (otherwise, takes a little while)
+        DispatchQueue.main.async() {
+
+            guard let timeValue = time else { return }
+
+            self.value = timeValue
+            self.timeLabel.setText("\(self.value)")
+        }
+    }
 }
 // swiftlint:enable all

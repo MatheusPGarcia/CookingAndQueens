@@ -28,6 +28,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         //Dummy Implementation
     }
 
+    var totalTime = 0
     @IBOutlet weak var timeLabel: UILabel!
 
     fileprivate let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
@@ -62,7 +63,34 @@ class ViewController: UIViewController, WCSessionDelegate {
 
             guard let timeValue = time else { return }
 
-            self.timeLabel.text = "time: \(timeValue)"
+            self.totalTime = timeValue
+            self.timeLabel.text = "time: \(self.totalTime)"
+        }
+    }
+
+    @IBAction func sub(_ sender: UIButton) {
+
+        totalTime -= 1
+        self.timeLabel.text = "time: \(totalTime)"
+    }
+
+    @IBAction func add(_ sender: UIButton) {
+
+        totalTime += 1
+        self.timeLabel.text = "time: \(totalTime)"
+    }
+
+    @IBAction func enviarWasPressed(_ sender: UIButton) {
+        sendValue()
+    }
+
+    func sendValue() {
+
+        do {
+            let time = ["Time": totalTime]
+            try session?.updateApplicationContext(time)
+        } catch {
+            print("error")
         }
     }
 }
