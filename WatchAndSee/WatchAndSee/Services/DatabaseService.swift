@@ -13,26 +13,27 @@ import Firebase
 class DatabaseService: NSObject {
 
     static var shared = DatabaseService()
+    let parseRef = ParseManager()
     var ref: DatabaseReference!
-    var recipes = Recipes()
+//    var recipes = Recipes()
 
     private override init() {
         super.init()
         ref = Database.database().reference()
     }
 
-    func createRecipeObject(recipeName: String) {
-        var ingredients: [String]
+    func createRecipeObject(recipeName: String, completion: @escaping (_ response: Recipes?) -> Void) {
 
-        ref.child("Recipes").child(recipeName).child("Ingredientes").observeSingleEvent(of: .value) { snapshot in
-
-            guard let ingrDictionary = snapshot.value as? [String: Any] else {
+        ref.child("Recipes").child(recipeName).observeSingleEvent(of: .value) { snapshot in
+            guard let snapshotDic = snapshot.value as? [String: Any] else {
                 print("deu merda")
+                completion(nil)
                 return
             }
+            let recipe = self.parseRef.parseRecipe(snapshotDic)
 
-            print(ingrDictionary)
+            completion(recipe)
         }
-
     }
+
 }

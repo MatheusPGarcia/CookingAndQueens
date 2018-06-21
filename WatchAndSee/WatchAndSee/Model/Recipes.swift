@@ -13,13 +13,24 @@ struct Recipes: Codable {
     var name: String
     var ingredients: [String]
     var time: String
-    var portions: Int
+    var rendiment: String
+    var steps: [String]
 
     init() {
         self.name = ""
         self.ingredients = []
         self.time = ""
-        self.portions = 0
+        self.rendiment = ""
+        self.steps = []
+    }
+
+    mutating func setValues(_ name: String, _ ing: [String], _ time: String, _ rendiment: String, _ steps: [String]) {
+        self.name = name
+        self.ingredients = ing
+        self.time = time
+        self.rendiment = rendiment
+        self.steps = steps
+
     }
 
 }

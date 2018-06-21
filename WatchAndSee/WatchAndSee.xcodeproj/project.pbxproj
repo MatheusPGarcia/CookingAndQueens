@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4200E12620DBE581001B3F8C /* ParseManager.swift */; };
 		423BF91920D98A80002021BA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF91820D98A80002021BA /* DatabaseService.swift */; };
 		423BF91B20D991A0002021BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 423BF91A20D9919F002021BA /* GoogleService-Info.plist */; };
 		423BF92420DA9BE9002021BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
-		428BC4FC20DAC5AD00C9638F /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BC4FB20DAC5AD00C9638F /* RecipeManager.swift */; };
 		AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7EE120D9869E0050C176 /* AppDelegate.swift */; };
 		AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7EE320D9869F0050C176 /* ViewController.swift */; };
 		AE4F7EE720D9869F0050C176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EE520D9869F0050C176 /* Main.storyboard */; };
@@ -22,10 +22,10 @@
 
 /* Begin PBXFileReference section */
 		2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchAndSee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4200E12620DBE581001B3F8C /* ParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
 		423BF91820D98A80002021BA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		423BF91A20D9919F002021BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		423BF92320DA9BE9002021BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
-		428BC4FB20DAC5AD00C9638F /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		55B9C0E03C3DACE156B916A8 /* Pods-WatchAndSee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.release.xcconfig"; sourceTree = "<group>"; };
 		AE4F7EDE20D9869E0050C176 /* WatchAndSee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchAndSee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE4F7EE120D9869E0050C176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				423BF91820D98A80002021BA /* DatabaseService.swift */,
-				428BC4FB20DAC5AD00C9638F /* RecipeManager.swift */,
+				4200E12620DBE581001B3F8C /* ParseManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 				423BF92420DA9BE9002021BA /* Recipes.swift in Sources */,
 				AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */,
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
-				428BC4FC20DAC5AD00C9638F /* RecipeManager.swift in Sources */,
+				4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */,
 				423BF91920D98A80002021BA /* DatabaseService.swift in Sources */,
 				AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */,
 			);
@@ -431,7 +431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.Watch.WatchAndSee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.Watch.WatchAndSee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
