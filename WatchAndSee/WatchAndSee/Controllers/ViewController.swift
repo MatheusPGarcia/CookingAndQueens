@@ -10,9 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var databaseManager: DatabaseService!
+    var recipies = [[Recipes]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        databaseManager = DatabaseService.shared
+
+        self.view.isUserInteractionEnabled = false
+
+        databaseManager.createRecipeObject(recipeName: "Bolo Simples", completion: { receivedRecipe in
+
+            if let recipe = receivedRecipe {
+                print(recipe)
+            }
+            self.view.isUserInteractionEnabled = true
+        })
     }
 
     override func didReceiveMemoryWarning() {
