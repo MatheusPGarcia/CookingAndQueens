@@ -10,7 +10,7 @@ import UIKit
 
 class ParseManager: NSObject {
     var ingredients = [String]()
-    var steps = [String]()
+    var steps = [Step]()
     var recipe = Recipes()
     // swiftlint:disable force_cast
 
@@ -36,10 +36,27 @@ class ParseManager: NSObject {
         }
 
         for element in stpDictionary {
-            steps.append(element.value as! String)
+
+            guard let stp = element.value as? [String: Any] else {
+                print("nao rolou")
+                return recipe
+            }
+
+            if let text = stp["Texto"] as? String {
+
+                let time = stp["Tempo"] as? Int
+
+                var newStep = Step()
+
+                newStep.text = text
+                newStep.time = time
+
+                steps.append(newStep)
+            }
         }
 
-       recipe.setValues(name, ingredients, time, rendiment, steps)
+        recipe.setValues(name, ingredients, time, rendiment, steps)
+
         return recipe
     }
 }

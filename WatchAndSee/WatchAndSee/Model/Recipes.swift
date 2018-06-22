@@ -14,7 +14,7 @@ struct Recipes: Codable {
     var ingredients: [String]
     var time: String
     var rendiment: String
-    var steps: [String]
+    var steps: [Step]
 
     init() {
         self.name = ""
@@ -24,7 +24,7 @@ struct Recipes: Codable {
         self.steps = []
     }
 
-    mutating func setValues(_ name: String, _ ing: [String], _ time: String, _ rendiment: String, _ steps: [String]) {
+    mutating func setValues(_ name: String, _ ing: [String], _ time: String, _ rendiment: String, _ steps: [Step]) {
         self.name = name
         self.ingredients = ing
         self.time = time
