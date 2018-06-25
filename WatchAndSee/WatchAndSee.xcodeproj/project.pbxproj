@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4200E12620DBE581001B3F8C /* ParseManager.swift */; };
 		423BF91920D98A80002021BA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF91820D98A80002021BA /* DatabaseService.swift */; };
 		423BF91B20D991A0002021BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 423BF91A20D9919F002021BA /* GoogleService-Info.plist */; };
+		423BF92420DA9BE9002021BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
+		42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C5F20DD6A4A00DD0400 /* CardView.swift */; };
+		42453C6420DEC88100DD0400 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C6320DEC88100DD0400 /* CategoryCell.swift */; };
+		42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C6720DF380E00DD0400 /* RecipeCell.swift */; };
 		AE1C083B20DACBAC00B0BB14 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083920DACBAC00B0BB14 /* Interface.storyboard */; };
 		AE1C083D20DACBAD00B0BB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083C20DACBAD00B0BB14 /* Assets.xcassets */; };
 		AE1C084420DACBAD00B0BB14 /* WatchAndSee Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AE1C084320DACBAD00B0BB14 /* WatchAndSee Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -23,6 +28,7 @@
 		AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7EE820D9869F0050C176 /* WatchAndSee.xcdatamodeld */; };
 		AE4F7EEC20D986A10050C176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EEB20D986A10050C176 /* Assets.xcassets */; };
 		AE4F7EEF20D986A10050C176 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EED20D986A10050C176 /* LaunchScreen.storyboard */; };
+		AEB0091120DD42810089224B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
 		F2772CF693FC58EC9D46F939 /* Pods_WatchAndSee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,8 +76,13 @@
 
 /* Begin PBXFileReference section */
 		2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchAndSee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4200E12620DBE581001B3F8C /* ParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
 		423BF91820D98A80002021BA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		423BF91A20D9919F002021BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		423BF92320DA9BE9002021BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		42453C5F20DD6A4A00DD0400 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		42453C6320DEC88100DD0400 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		42453C6720DF380E00DD0400 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		55B9C0E03C3DACE156B916A8 /* Pods-WatchAndSee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.release.xcconfig"; sourceTree = "<group>"; };
 		AE1C083720DACBAC00B0BB14 /* WatchAndSee Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchAndSee Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1C083A20DACBAC00B0BB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -92,6 +103,7 @@
 		AE4F7EEB20D986A10050C176 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE4F7EEE20D986A10050C176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE4F7EF020D986A20050C176 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEB0091020DD42810089224B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		C48E515B42E128347C9FC879 /* Pods-WatchAndSee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				423BF91820D98A80002021BA /* DatabaseService.swift */,
+				4200E12620DBE581001B3F8C /* ParseManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -126,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				AE4F7EE320D9869F0050C176 /* ViewController.swift */,
+				42453C6320DEC88100DD0400 /* CategoryCell.swift */,
+				42453C6720DF380E00DD0400 /* RecipeCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -133,6 +148,8 @@
 		423BF91E20D99710002021BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				423BF92320DA9BE9002021BA /* Recipes.swift */,
+				AEB0091020DD42810089224B /* Step.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,6 +157,7 @@
 		423BF91F20D99714002021BA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				42453C5F20DD6A4A00DD0400 /* CardView.swift */,
 				AE4F7EE520D9869F0050C176 /* Main.storyboard */,
 				AE4F7EED20D986A10050C176 /* LaunchScreen.storyboard */,
 			);
@@ -150,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				AE4F7EE120D9869E0050C176 /* AppDelegate.swift */,
-				AE4F7EEB20D986A10050C176 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -226,6 +243,7 @@
 				423BF91F20D99714002021BA /* View */,
 				423BF91D20D996F5002021BA /* Controllers */,
 				AE4F7EF020D986A20050C176 /* Info.plist */,
+				AE4F7EEB20D986A10050C176 /* Assets.xcassets */,
 				423BF91A20D9919F002021BA /* GoogleService-Info.plist */,
 				AE4F7EE820D9869F0050C176 /* WatchAndSee.xcdatamodeld */,
 			);
@@ -434,9 +452,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423BF92420DA9BE9002021BA /* Recipes.swift in Sources */,
 				AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */,
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
+				AEB0091120DD42810089224B /* Step.swift in Sources */,
+				4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */,
+				42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */,
+				42453C6420DEC88100DD0400 /* CategoryCell.swift in Sources */,
 				423BF91920D98A80002021BA /* DatabaseService.swift in Sources */,
+				42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */,
 				AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,7 +720,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.Watch.WatchAndSee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -715,7 +739,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.Watch.WatchAndSee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
