@@ -175,6 +175,66 @@
             </objects>
             <point key="canvasLocation" x="1076" y="132.68365817091455"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="ZEm-Vu-zWg">
+            <objects>
+                <viewController id="cjv-nh-H5X" customClass="WatchTestViewController" customModule="WatchAndSee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Po1-K0-bhX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iog-yl-fgK">
+                                <rect key="frame" x="182" y="323" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiY-Jj-6jG">
+                                <rect key="frame" x="266.5" y="309.5" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addWasPressed:" destination="cjv-nh-H5X" eventType="touchUpInside" id="s6F-FV-9Tz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGj-AZ-KMt">
+                                <rect key="frame" x="79" y="309.5" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="subWasPressed:" destination="cjv-nh-H5X" eventType="touchUpInside" id="rwg-4p-pnr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZe-wR-d6K">
+                                <rect key="frame" x="166.5" y="485.5" width="42" height="30"/>
+                                <state key="normal" title="Enviar"/>
+                                <connections>
+                                    <action selector="sendToWatchWasPressed:" destination="cjv-nh-H5X" eventType="touchUpInside" id="qgy-Zj-PuW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EGj-AZ-KMt" firstAttribute="centerY" secondItem="Po1-K0-bhX" secondAttribute="centerY" id="9u6-bC-aF3"/>
+                            <constraint firstItem="Iog-yl-fgK" firstAttribute="centerX" secondItem="Po1-K0-bhX" secondAttribute="centerX" id="NbN-Bj-27N"/>
+                            <constraint firstItem="EGj-AZ-KMt" firstAttribute="centerX" secondItem="Po1-K0-bhX" secondAttribute="centerX" multiplier="0.5" id="Sbt-nT-uC3"/>
+                            <constraint firstItem="iiY-Jj-6jG" firstAttribute="centerX" secondItem="Po1-K0-bhX" secondAttribute="centerX" multiplier="1.5" id="TJt-9w-zkO"/>
+                            <constraint firstItem="bZe-wR-d6K" firstAttribute="centerY" secondItem="Po1-K0-bhX" secondAttribute="centerY" multiplier="1.5" id="amo-iy-eWL"/>
+                            <constraint firstItem="bZe-wR-d6K" firstAttribute="centerX" secondItem="Po1-K0-bhX" secondAttribute="centerX" id="coL-hl-De6"/>
+                            <constraint firstItem="Iog-yl-fgK" firstAttribute="centerY" secondItem="Po1-K0-bhX" secondAttribute="centerY" id="hiV-YS-Uo5"/>
+                            <constraint firstItem="iiY-Jj-6jG" firstAttribute="centerY" secondItem="Po1-K0-bhX" secondAttribute="centerY" id="jzY-4E-ovj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ycK-J7-AqV"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="WTv-nv-o1T"/>
+                    <connections>
+                        <outlet property="valueLabel" destination="Iog-yl-fgK" id="QpX-s9-tEd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrJ-gn-Yq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="826.23688155922048"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="InB-uf-vYH">
             <objects>
@@ -187,6 +247,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Lkz-LF-2Vn"/>
+                        <segue destination="cjv-nh-H5X" kind="relationship" relationship="viewControllers" id="kph-BH-PAh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfv-4e-Mgz" userLabel="First Responder" sceneMemberID="firstResponder"/>

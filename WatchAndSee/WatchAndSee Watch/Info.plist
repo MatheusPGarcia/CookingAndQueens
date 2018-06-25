@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.CookingAndQueens.Watch.WatchAndSee</string>
+	<string>com.CookingAndQueens.WatchAndSee</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
