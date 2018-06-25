@@ -11,6 +11,9 @@
 		423BF91920D98A80002021BA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF91820D98A80002021BA /* DatabaseService.swift */; };
 		423BF91B20D991A0002021BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 423BF91A20D9919F002021BA /* GoogleService-Info.plist */; };
 		423BF92420DA9BE9002021BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
+		42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C5F20DD6A4A00DD0400 /* CardView.swift */; };
+		42453C6420DEC88100DD0400 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C6320DEC88100DD0400 /* CategoryCell.swift */; };
+		42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C6720DF380E00DD0400 /* RecipeCell.swift */; };
 		AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7EE120D9869E0050C176 /* AppDelegate.swift */; };
 		AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7EE320D9869F0050C176 /* ViewController.swift */; };
 		AE4F7EE720D9869F0050C176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EE520D9869F0050C176 /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 		423BF91820D98A80002021BA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		423BF91A20D9919F002021BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		423BF92320DA9BE9002021BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		42453C5F20DD6A4A00DD0400 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		42453C6320DEC88100DD0400 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		42453C6720DF380E00DD0400 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		55B9C0E03C3DACE156B916A8 /* Pods-WatchAndSee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.release.xcconfig"; sourceTree = "<group>"; };
 		AE4F7EDE20D9869E0050C176 /* WatchAndSee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchAndSee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE4F7EE120D9869E0050C176 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				AE4F7EE320D9869F0050C176 /* ViewController.swift */,
+				42453C6320DEC88100DD0400 /* CategoryCell.swift */,
+				42453C6720DF380E00DD0400 /* RecipeCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -81,6 +89,7 @@
 		423BF91F20D99714002021BA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				42453C5F20DD6A4A00DD0400 /* CardView.swift */,
 				AE4F7EE520D9869F0050C176 /* Main.storyboard */,
 				AE4F7EED20D986A10050C176 /* LaunchScreen.storyboard */,
 			);
@@ -91,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				AE4F7EE120D9869E0050C176 /* AppDelegate.swift */,
-				AE4F7EEB20D986A10050C176 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				423BF91F20D99714002021BA /* View */,
 				423BF91D20D996F5002021BA /* Controllers */,
 				AE4F7EF020D986A20050C176 /* Info.plist */,
+				AE4F7EEB20D986A10050C176 /* Assets.xcassets */,
 				423BF91A20D9919F002021BA /* GoogleService-Info.plist */,
 				AE4F7EE820D9869F0050C176 /* WatchAndSee.xcdatamodeld */,
 			);
@@ -282,7 +291,10 @@
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
 				AEB0091120DD42810089224B /* Step.swift in Sources */,
 				4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */,
+				42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */,
+				42453C6420DEC88100DD0400 /* CategoryCell.swift in Sources */,
 				423BF91920D98A80002021BA /* DatabaseService.swift in Sources */,
+				42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */,
 				AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
