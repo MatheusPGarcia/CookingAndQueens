@@ -56,14 +56,20 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     internal func session(_ session: WCSession,
                           didReceiveApplicationContext applicationContext: [String: Any]) {
 
-        let sessionValue = applicationContext["Value"] as? Int
+        let sessionValue = applicationContext["Receita"]
+            as? Recipes
+
+        print("this is it:\n\(sessionValue)")
+        self.updateLabel(value: 404)
 
         DispatchQueue.main.async {
 
             guard let safeValue = sessionValue else { return }
 
-            self.value = safeValue
-            self.updateLabel(value: self.value)
+            print("oh man! I can't believe I can fly:\n\(safeValue)")
+
+//            self.value = safeValue
+            self.updateLabel(value: 42)
         }
     }
 

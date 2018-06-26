@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var highlightImage: UIImageView!
 
-
     var databaseManager: DatabaseService!
     var recipies = [[Recipes]]()
 

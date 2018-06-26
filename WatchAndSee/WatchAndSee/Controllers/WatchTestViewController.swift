@@ -28,6 +28,9 @@ class WatchTestViewController: UIViewController, WCSessionDelegate {
     var value = 0
     var session: WCSession!
 
+    var databaseManager: DatabaseService!
+    var recipies = Recipes()
+
     @IBOutlet weak var valueLabel: UILabel!
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +46,20 @@ class WatchTestViewController: UIViewController, WCSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        databaseManager = DatabaseService.shared
+
+        self.view.isUserInteractionEnabled = false
+
+        databaseManager.createRecipeObject(recipeName: "Bolo Simples", completion: { receivedRecipe in
+
+            if let recipe = receivedRecipe {
+                print(recipe)
+
+                self.recipies = recipe
+            }
+
+            self.view.isUserInteractionEnabled = true
+        })
         // Do any additional setup after loading the view.
     }
 
@@ -50,7 +67,7 @@ class WatchTestViewController: UIViewController, WCSessionDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     fileprivate func updateLabel (value: Int) {
         valueLabel.text = "\(value)"
     }
@@ -69,12 +86,24 @@ class WatchTestViewController: UIViewController, WCSessionDelegate {
         }
     }
 
-    func sendValue() {
+    func sendValue(data: [String: Any?]) {
 
         do {
-            let valueToSend = ["Value": value]
+            let valueToSend = data
             try session.updateApplicationContext(valueToSend)
+            print("Sucesso")
         } catch {
+            let alertController = UIAlertController(title: "Erro",
+                                                    message: "Não rolou por: \(error)",
+                                                    preferredStyle: .alert)
+
+            let actionOk = UIAlertAction(title: "OK",
+                                         style: .default,
+                                         handler: nil)
+
+            alertController.addAction(actionOk)
+
+            self.present(alertController, animated: true, completion: nil)
             print("error")
         }
     }
@@ -92,6 +121,8 @@ class WatchTestViewController: UIViewController, WCSessionDelegate {
     }
 
     @IBAction func sendToWatchWasPressed(_ sender: UIButton) {
-        sendValue()
+        let parse = ParseWatch()
+        let steps = parse.sendToWatch(recipe: recipies)
+        sendValue(data: steps)
     }
 }
