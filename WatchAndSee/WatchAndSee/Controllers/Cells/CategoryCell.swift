@@ -43,6 +43,9 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("\n\nINDEX PATH PRESSED AT\(indexPath)\n\n")
+    }
 }
 
 extension CategoryCell: UICollectionViewDelegateFlowLayout {

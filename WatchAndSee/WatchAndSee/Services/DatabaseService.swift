@@ -22,17 +22,19 @@ class DatabaseService: NSObject {
         ref = Database.database().reference()
     }
 
-    func createRecipeObject(recipeName: String, completion: @escaping (_ response: Recipes?) -> Void) {
+    func createRecipeObject(recipeName: [String], completion: @escaping (_ response: Recipes?) -> Void) {
 
-        ref.child("Recipes").child(recipeName).observeSingleEvent(of: .value) { snapshot in
-            guard let snapshotDic = snapshot.value as? [String: Any] else {
-                print("deu merda")
-                completion(nil)
-                return
+        for element in recipeName {
+            ref.child("Recipes").child(element).observeSingleEvent(of: .value) { snapshot in
+                guard let snapshotDic = snapshot.value as? [String: Any] else {
+                    print("deu merda")
+                    completion(nil)
+                    return
+                }
+                let recipe = self.parseRef.parseRecipe(snapshotDic)
+
+                completion(recipe)
             }
-            let recipe = self.parseRef.parseRecipe(snapshotDic)
-
-            completion(recipe)
         }
     }
 

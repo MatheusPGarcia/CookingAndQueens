@@ -12,10 +12,15 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var highlightImage: UIImageView!
-
+    @IBOutlet weak var hightlightLabel: UILabel!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var databaseManager: DatabaseService!
-    var recipies = [[Recipes]]()
+    var indicator = 0
+    var doneLoading = false
+    var recipes = [Recipes]()
+    var recipesNames = ["Berinjela à parmegiana", "Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,24 +28,39 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        highlightImage.layer.cornerRadius = 5
-        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        setupHighlightRecipe()
 
         databaseManager = DatabaseService.shared
 
         self.view.isUserInteractionEnabled = false
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
 
-        databaseManager.createRecipeObject(recipeName: "Bolo Simples", completion: { receivedRecipe in
-
+        databaseManager.createRecipeObject(recipeName: recipesNames, completion: { receivedRecipe in
+            self.indicator += 1
             if let recipe = receivedRecipe {
-                print(recipe)
+                self.recipes.append(recipe)
+                print("\n\n ------ ")
+                print(self.recipes)
             }
-            self.view.isUserInteractionEnabled = true
+            if self.indicator == self.recipesNames.count {
+                self.view.isUserInteractionEnabled = true
+                self.activityIndicator.stopAnimating()
+                self.loadingView.isHidden = true
+                self.doneLoading = true
+            }
         })
     }
-}
-// swiftlint:disable force_cast
 
+    func setupHighlightRecipe() {
+        highlightImage.layer.cornerRadius = 5
+        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        highlightImage.image = UIImage(named: "Ratatouille")
+        hightlightLabel.text = "Ratatouille"
+    }
+}
+
+// swiftlint:disable force_cast
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -51,23 +71,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section Title \(section)"
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let titleLabel = UILabel()
+        titleLabel.textAlignment = .left
+        titleLabel.font = UIFont(name: "LouisGeorgeCafe", size: 16)
+        titleLabel.text = "Section \(section)"
+        titleLabel.frame = CGRect(x: 8, y: 0, width: view.bounds.width, height: 30)
+        headerView.backgroundColor = .white
+        headerView.addSubview(titleLabel)
+        return headerView
     }
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        let titleLabel = UILabel()
-//        titleLabel.backgroundColor = .white
-//        titleLabel.textColor = .black
-//        titleLabel.textAlignment = .left
-//        titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-//        titleLabel.frame = CGRect(x: 10, y: -15, width: view.bounds.width, height: 70)
-//        titleLabel.text = "Header"
-//        headerView.addSubview(titleLabel)
-//        return headerView
-//    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
