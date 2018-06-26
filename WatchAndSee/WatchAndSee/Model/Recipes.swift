@@ -16,6 +16,7 @@ struct Recipes: Codable {
     var rendiment: String
     var steps: [Step]
 
+    /*
     init() {
         self.name = ""
         self.ingredients = []
@@ -32,5 +33,6 @@ struct Recipes: Codable {
         self.steps = steps
 
     }
+ */
 
 }
