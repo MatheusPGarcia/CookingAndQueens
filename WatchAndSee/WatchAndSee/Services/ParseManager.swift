@@ -20,18 +20,19 @@ class ParseManager: NSObject {
         let rendiment = snapshotDic["rendimento"] as! String
         let ing = snapshotDic["Ingredientes"]!
         let stp = snapshotDic["Passos"]
+        let photo = snapshotDic["foto"] as! String
 
         ingredients = []
         steps = []
 
         guard let ingDictionary = ing as? [String: Any] else {
             print("deu merda")
-            return Recipes(name: "", ingredients: [], time: "", rendiment: "", steps: [])
+            return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 
         guard let stpDictionary = stp as? [String: Any] else {
             print("deu merda")
-            return Recipes(name: "", ingredients: [], time: "", rendiment: "", steps: [])
+            return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 
         for element in ingDictionary {
@@ -42,7 +43,7 @@ class ParseManager: NSObject {
 
             guard let stp = element.value as? [String: Any] else {
                 print("nao rolou")
-                return Recipes(name: "", ingredients: [], time: "", rendiment: "", steps: [])
+                return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
             }
 
             if let text = stp["Texto"] as? String {
@@ -58,6 +59,6 @@ class ParseManager: NSObject {
             }
         }
 
-        return Recipes(name: name, ingredients: ingredients, time: time, rendiment: rendiment, steps: steps)
+        return Recipes(name: name, ingredients: ingredients, time: time, rendiment: rendiment, photo: photo, steps: steps)
     }
 }

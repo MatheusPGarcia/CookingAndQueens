@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var doneLoading = false
     var recipes = [Recipes]()
     var categories = [Category]()
+    var rec: Recipes?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,17 @@ class ViewController: UIViewController {
         category.setValues(name, elements)
         categories.append(category)
     }
+
+    func goToDetails(recipe: Recipes) {
+        self.rec = recipe
+        performSegue(withIdentifier: "recipeDetails", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let recipeDetailsVC = segue.destination as? RecipesDetailsViewController {
+            recipeDetailsVC.recipe = self.rec!
+        }
+    }
 }
 
 // swiftlint:disable force_cast
@@ -82,6 +94,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryCell
 
         cell.setup(category: self.categories[indexPath.section])
+        cell.delegate = self
 
         return cell
     }
@@ -109,4 +122,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
+}
+
+extension ViewController: RecipeDelegate {
+
+    func presentData(recipe: Recipes) {
+        goToDetails(recipe: recipe)
+    }
+
 }

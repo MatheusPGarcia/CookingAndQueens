@@ -4,6 +4,8 @@
 <dict>
 	<key>LSApplicationCategoryType</key>
 	<array>
+		<string>OleoScript-Regular.ttf</string>
+		<string>OleoScript-Bold.ttf</string>
 		<string>LouisGeorgeCafe.ttf</string>
 		<string>LouisGeorgeCafeBold.ttf</string>
 	</array>

@@ -14,6 +14,15 @@ struct Recipes: Codable {
     var ingredients: [String]
     var time: String
     var rendiment: String
+    var photo: String
     var steps: [Step]
 
+    init(name: String, ingredients: [String], time: String, rendiment: String, photo: String, steps: [Step]) {
+        self.name = name
+        self.ingredients = ingredients
+        self.time = time
+        self.rendiment = rendiment
+        self.photo = photo
+        self.steps = steps
+    }
 }

@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol RecipeDelegate{
+    func presentData(recipe: Recipes)
+}
+
 class CategoryCell: UITableViewCell {
-    // swiftlint:disable force_cast
 
     @IBOutlet weak var collectionView: UICollectionView!
 
     var category: Category?
+    var delegate: RecipeDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -35,13 +40,20 @@ class CategoryCell: UITableViewCell {
 }
 
 extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  (self.category?.recipes.count)!
     }
+    // swiftlint:disable force_cast
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCell
+        cell.recipeLabel.text = category?.recipes[indexPath.row].name
+        cell.recipeImage.image = setImage(url: (category?.recipes[indexPath.row].photo)!)
+
         return cell
+        // swiftlint:enable force_cast
+
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -49,6 +61,18 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("INDEX PATH PRESSED AT \(indexPath)IN COLLECTION\n\n")
+
+        self.delegate?.presentData(recipe: (self.category?.recipes[indexPath.row])!)
+    }
+
+    func setImage(url: String) -> UIImage {
+        var data: Data
+        // swiftlint:disable force_try
+
+        let imgURL = URL(string: url)
+        data = try! Data(contentsOf: imgURL!)
+        let image = UIImage(data: data)
+        return image!
     }
 }
 
