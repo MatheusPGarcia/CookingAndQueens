@@ -21,6 +21,8 @@
 		42453C6F20E28B3D00DD0400 /* LouisGeorgeCafe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */; };
 		42453C7020E28B3D00DD0400 /* LouisGeorgeCafe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */; };
 		42501DB220E2A89100F67532 /* RecipesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42501DB120E2A89100F67532 /* RecipesDetailsViewController.swift */; };
+		42D609B320E31FF800349CB4 /* ObjectsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609B220E31FF800349CB4 /* ObjectsManager.swift */; };
+		42D609B520E321BC00349CB4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609B420E321BC00349CB4 /* Category.swift */; };
 		AE1C083B20DACBAC00B0BB14 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083920DACBAC00B0BB14 /* Interface.storyboard */; };
 		AE1C083D20DACBAD00B0BB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083C20DACBAD00B0BB14 /* Assets.xcassets */; };
 		AE1C084420DACBAD00B0BB14 /* WatchAndSee Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AE1C084320DACBAD00B0BB14 /* WatchAndSee Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -94,6 +96,8 @@
 		42453C6920E289FA00DD0400 /* LouisGeorgeCafeBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LouisGeorgeCafeBold.ttf; sourceTree = "<group>"; };
 		42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LouisGeorgeCafe.ttf; sourceTree = "<group>"; };
 		42501DB120E2A89100F67532 /* RecipesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailsViewController.swift; sourceTree = "<group>"; };
+		42D609B220E31FF800349CB4 /* ObjectsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsManager.swift; sourceTree = "<group>"; };
+		42D609B420E321BC00349CB4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		55B9C0E03C3DACE156B916A8 /* Pods-WatchAndSee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.release.xcconfig"; sourceTree = "<group>"; };
 		AE1C083720DACBAC00B0BB14 /* WatchAndSee Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchAndSee Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1C083A20DACBAC00B0BB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				423BF91820D98A80002021BA /* DatabaseService.swift */,
 				4200E12620DBE581001B3F8C /* ParseManager.swift */,
+				42D609B220E31FF800349CB4 /* ObjectsManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				423BF92320DA9BE9002021BA /* Recipes.swift */,
+				42D609B420E321BC00349CB4 /* Category.swift */,
 				AEB0091020DD42810089224B /* Step.swift */,
 			);
 			path = Model;
@@ -483,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				423BF92420DA9BE9002021BA /* Recipes.swift in Sources */,
+				42D609B320E31FF800349CB4 /* ObjectsManager.swift in Sources */,
 				AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */,
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
 				AEB0091120DD42810089224B /* Step.swift in Sources */,
@@ -494,6 +501,7 @@
 				42501DB220E2A89100F67532 /* RecipesDetailsViewController.swift in Sources */,
 				42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */,
 				AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */,
+				42D609B520E321BC00349CB4 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

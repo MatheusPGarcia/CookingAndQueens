@@ -17,9 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var databaseManager: DatabaseService!
+    var objManager = ObjectsManager()
+
     var indicator = 0
     var doneLoading = false
     var recipes = [Recipes]()
+    var categories = [Category]()
     var recipesNames = ["Berinjela à parmegiana", "Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"]
 
     override func viewDidLoad() {
@@ -29,25 +32,25 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self
 
         setupHighlightRecipe()
+        setupCategories(name: "Para impressionar as visitas", elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
+        setupCategories(name: "Almoço requintado", elements: ["Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
 
         databaseManager = DatabaseService.shared
 
         self.view.isUserInteractionEnabled = false
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
+        print("Saemi")
 
-        databaseManager.createRecipeObject(recipeName: recipesNames, completion: { receivedRecipe in
+        databaseManager.createRecipeObject(completion: { receivedRecipe in
+            print("Larissa")
             self.indicator += 1
-            if let recipe = receivedRecipe {
-                self.recipes.append(recipe)
-                print("\n\n ------ ")
-                print(self.recipes)
-            }
-            if self.indicator == self.recipesNames.count {
+            if let received = receivedRecipe {
+                self.recipes = receivedRecipe!
                 self.view.isUserInteractionEnabled = true
                 self.activityIndicator.stopAnimating()
                 self.loadingView.isHidden = true
-                self.doneLoading = true
+                self.categories = self.objManager.createRecipes(self.recipes, self.categories)
             }
         })
     }
@@ -57,6 +60,13 @@ class ViewController: UIViewController {
         highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         highlightImage.image = UIImage(named: "Ratatouille")
         hightlightLabel.text = "Ratatouille"
+    }
+
+    func setupCategories(name: String, elements: [String]) {
+        var category = Category()
+
+        category.setValues(name, elements)
+        categories.append(category)
     }
 }
 
@@ -85,10 +95,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return categories.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 180
     }
 }
