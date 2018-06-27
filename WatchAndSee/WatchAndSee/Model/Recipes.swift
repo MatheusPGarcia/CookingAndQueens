@@ -16,5 +16,4 @@ struct Recipes: Codable {
     var rendiment: String
     var steps: [Step]
 
-
 }

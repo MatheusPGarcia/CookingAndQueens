@@ -43,7 +43,7 @@ class DatabaseService: NSObject {
         ref.child("Recipes").observeSingleEvent(of: .value) { snapshot in
             for children in snapshot.children.allObjects {
                 if let childSnapshot = children as? DataSnapshot,
-                    let recipeJSON = childSnapshot.value as? [String:Any] {
+                    let recipeJSON = childSnapshot.value as? [String: Any] {
                     let recipe = self.parseRef.parseRecipe(recipeJSON)
                     print(recipe)
                     ingredients.append(recipe)

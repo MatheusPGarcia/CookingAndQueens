@@ -32,8 +32,10 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self
 
         setupHighlightRecipe()
-        setupCategories(name: "Para impressionar as visitas", elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
-        setupCategories(name: "Almoço requintado", elements: ["Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
+        setupCategories(name: "Para impressionar as visitas",
+                        elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
+        setupCategories(name: "Almoço requintado",
+                        elements: ["Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
 
         databaseManager = DatabaseService.shared
 
@@ -41,13 +43,16 @@ class ViewController: UIViewController {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         databaseManager.createRecipeObject(completion: { receivedRecipe in
-            if let received = receivedRecipe {
+
+            //finished retrieving data from database
+            if receivedRecipe != nil {
                 self.recipes = receivedRecipe!
                 self.view.isUserInteractionEnabled = true
                 self.activityIndicator.stopAnimating()
                 self.loadingView.isHidden = true
                 self.loadingLabel.isHidden = true
                 self.categories = self.objManager.createCategories(self.recipes, self.categories)
+                self.tableView.reloadData()
             }
         })
     }
@@ -76,6 +81,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryCell
 
+        cell.setup(category: self.categories[indexPath.section])
+
         return cell
     }
 
@@ -84,11 +91,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont(name: "LouisGeorgeCafe", size: 16)
-        titleLabel.text = "Section \(section)"
-        titleLabel.frame = CGRect(x: 8, y: 0, width: view.bounds.width, height: 30)
+        titleLabel.text = self.categories[section].name
+        titleLabel.frame = CGRect(x: 20, y: 0, width: view.bounds.width, height: 30)
         headerView.backgroundColor = .white
         headerView.addSubview(titleLabel)
         return headerView
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("INDEX PATH PRESSED AT \(indexPath)IN TABLE\n")
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
