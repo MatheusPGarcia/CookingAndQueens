@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var hightlightLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
 
     var databaseManager: DatabaseService!
     var objManager = ObjectsManager()
@@ -23,7 +24,6 @@ class ViewController: UIViewController {
     var doneLoading = false
     var recipes = [Recipes]()
     var categories = [Category]()
-    var recipesNames = ["Berinjela à parmegiana", "Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +40,14 @@ class ViewController: UIViewController {
         self.view.isUserInteractionEnabled = false
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        print("Saemi")
-
         databaseManager.createRecipeObject(completion: { receivedRecipe in
-            print("Larissa")
-            self.indicator += 1
             if let received = receivedRecipe {
                 self.recipes = receivedRecipe!
                 self.view.isUserInteractionEnabled = true
                 self.activityIndicator.stopAnimating()
                 self.loadingView.isHidden = true
-                self.categories = self.objManager.createRecipes(self.recipes, self.categories)
+                self.loadingLabel.isHidden = true
+                self.categories = self.objManager.createCategories(self.recipes, self.categories)
             }
         })
     }
