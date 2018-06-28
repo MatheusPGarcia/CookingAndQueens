@@ -42,11 +42,17 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmM-SB-caf" customClass="CardView" customModule="WatchAndSee" customModuleProvider="target">
                                             <rect key="frame" x="19" y="57" width="337.5" height="253.5"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6t-yW-k8y">
+                                                    <rect key="frame" x="-0.5" y="-0.5" width="337.5" height="253.5"/>
+                                                    <connections>
+                                                        <action selector="highlightPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HD9-VX-joA"/>
+                                                    </connections>
+                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w7a-l0-lJZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="337.5" height="177.5"/>
                                                     <color key="backgroundColor" red="1" green="0.63035300930000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suflê Doce de Leite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVi-MR-KSK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVi-MR-KSK">
                                                     <rect key="frame" x="0.0" y="204" width="337.5" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="LouisGeorgeCafe" family="Louis George Cafe" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -55,11 +61,15 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="m6t-yW-k8y" firstAttribute="centerX" secondItem="zmM-SB-caf" secondAttribute="centerX" id="A7F-fk-4r6"/>
+                                                <constraint firstItem="m6t-yW-k8y" firstAttribute="centerY" secondItem="zmM-SB-caf" secondAttribute="centerY" id="Q0o-ua-aZJ"/>
                                                 <constraint firstItem="w7a-l0-lJZ" firstAttribute="centerX" secondItem="zmM-SB-caf" secondAttribute="centerX" id="ZFF-et-cEP"/>
                                                 <constraint firstAttribute="bottom" secondItem="UVi-MR-KSK" secondAttribute="bottom" constant="27" id="cRI-pt-EtV"/>
                                                 <constraint firstItem="w7a-l0-lJZ" firstAttribute="trailing" secondItem="UVi-MR-KSK" secondAttribute="trailing" id="gmI-DT-xY7"/>
+                                                <constraint firstItem="m6t-yW-k8y" firstAttribute="width" secondItem="zmM-SB-caf" secondAttribute="width" id="hVy-iM-Uof"/>
                                                 <constraint firstItem="w7a-l0-lJZ" firstAttribute="height" secondItem="zmM-SB-caf" secondAttribute="height" multiplier="0.7" id="iUf-xj-bSI"/>
                                                 <constraint firstItem="UVi-MR-KSK" firstAttribute="top" secondItem="w7a-l0-lJZ" secondAttribute="bottom" constant="26.5" id="kFo-ji-Dbr"/>
+                                                <constraint firstItem="m6t-yW-k8y" firstAttribute="height" secondItem="zmM-SB-caf" secondAttribute="height" id="n05-vZ-50B"/>
                                                 <constraint firstItem="w7a-l0-lJZ" firstAttribute="top" secondItem="zmM-SB-caf" secondAttribute="top" id="opj-xQ-351"/>
                                                 <constraint firstItem="w7a-l0-lJZ" firstAttribute="width" secondItem="zmM-SB-caf" secondAttribute="width" id="pfJ-4V-Ue4"/>
                                                 <constraint firstItem="w7a-l0-lJZ" firstAttribute="leading" secondItem="UVi-MR-KSK" secondAttribute="leading" id="u64-vH-1KL"/>
@@ -207,6 +217,7 @@
                     <navigationItem key="navigationItem" id="Gfr-NX-Rm8"/>
                     <connections>
                         <outlet property="activityIndicator" destination="5Vk-wJ-5hE" id="uIQ-OD-DYs"/>
+                        <outlet property="highlightButton" destination="m6t-yW-k8y" id="38r-oN-Iii"/>
                         <outlet property="highlightImage" destination="w7a-l0-lJZ" id="Y1o-i5-0ej"/>
                         <outlet property="hightlightLabel" destination="UVi-MR-KSK" id="QXR-Da-3sR"/>
                         <outlet property="loadingLabel" destination="9bX-Z7-jCc" id="OVK-uK-Tz5"/>
