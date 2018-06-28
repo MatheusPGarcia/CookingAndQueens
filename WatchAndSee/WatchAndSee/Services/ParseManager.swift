@@ -30,16 +30,19 @@ class ParseManager: NSObject {
             return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 
+
         guard let stpDictionary = stp as? [String: Any] else {
             print("deu merda")
             return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 
+        let sortedSteps = stpDictionary.sorted(by: {$0.0 < $1.0})
+
         for element in ingDictionary {
             ingredients.append(element.value as! String)
         }
 
-        for element in stpDictionary {
+        for element in sortedSteps {
 
             guard let stp = element.value as? [String: Any] else {
                 print("nao rolou")

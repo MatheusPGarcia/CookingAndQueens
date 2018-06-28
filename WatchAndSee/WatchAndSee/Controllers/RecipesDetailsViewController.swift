@@ -17,6 +17,7 @@ class RecipesDetailsViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var portionsImage: UIImageView!
     @IBOutlet weak var portionsLabel: UILabel!
+    @IBOutlet weak var startRecipeButton: UIButton!
 
     var recipe: Recipes?
 
@@ -31,6 +32,8 @@ class RecipesDetailsViewController: UIViewController {
 
         portionsImage.image = UIImage(named: "Portions")
         portionsLabel.text = recipe?.rendiment
+
+        startRecipeButton.layer.cornerRadius = 5
 
         recipeImage.image = setImage(url: (recipe?.photo)!)
         recipeNameLabel.text = (recipe?.name)!
@@ -50,6 +53,9 @@ class RecipesDetailsViewController: UIViewController {
         data = try! Data(contentsOf: imgURL!)
         let image = UIImage(data: data)
         return image!
+    }
+    @IBAction func startRecipeButtonPressed(_ sender: Any) {
+        
     }
 }
 // swiftlint:disable force_cast
