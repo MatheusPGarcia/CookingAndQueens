@@ -30,7 +30,6 @@ class ParseManager: NSObject {
             return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 
-
         guard let stpDictionary = stp as? [String: Any] else {
             print("deu merda")
             return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
@@ -62,6 +61,11 @@ class ParseManager: NSObject {
             }
         }
 
-        return Recipes(name: name, ingredients: ingredients, time: time, rendiment: rendiment, photo: photo, steps: steps)
+        return Recipes(name: name,
+                       ingredients: ingredients,
+                       time: time,
+                       rendiment: rendiment,
+                       photo: photo,
+                       steps: steps)
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Category: Codable {
+struct Category {
 
     var name: String
     var elements: [String]

@@ -26,6 +26,7 @@
 		42D609B720E3EB6A00349CB4 /* OleoScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D609B620E3EB6800349CB4 /* OleoScript-Bold.ttf */; };
 		42D609B920E3EBF700349CB4 /* OleoScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D609B820E3EBF600349CB4 /* OleoScript-Regular.ttf */; };
 		42D609BB20E3F9AF00349CB4 /* RecipeDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609BA20E3F9AF00349CB4 /* RecipeDetailsCell.swift */; };
+		AE18F40020E527B6007DC404 /* WatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE18F3FF20E527B6007DC404 /* WatchController.swift */; };
 		AE1C083B20DACBAC00B0BB14 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083920DACBAC00B0BB14 /* Interface.storyboard */; };
 		AE1C083D20DACBAD00B0BB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083C20DACBAD00B0BB14 /* Assets.xcassets */; };
 		AE1C084420DACBAD00B0BB14 /* WatchAndSee Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AE1C084320DACBAD00B0BB14 /* WatchAndSee Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -108,6 +109,7 @@
 		42D609B820E3EBF600349CB4 /* OleoScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OleoScript-Regular.ttf"; sourceTree = "<group>"; };
 		42D609BA20E3F9AF00349CB4 /* RecipeDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsCell.swift; sourceTree = "<group>"; };
 		55B9C0E03C3DACE156B916A8 /* Pods-WatchAndSee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.release.xcconfig"; sourceTree = "<group>"; };
+		AE18F3FF20E527B6007DC404 /* WatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchController.swift; sourceTree = "<group>"; };
 		AE1C083720DACBAC00B0BB14 /* WatchAndSee Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchAndSee Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1C083A20DACBAC00B0BB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		AE1C083C20DACBAD00B0BB14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				AE4F7EE320D9869F0050C176 /* ViewController.swift */,
 				42501DB120E2A89100F67532 /* RecipesDetailsViewController.swift */,
 				AEFE4E5520E175C900D5688E /* WatchTestViewController.swift */,
+				AE18F3FF20E527B6007DC404 /* WatchController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				AEFE4E5820E17ECE00D5688E /* ParseWatch.swift in Sources */,
 				42501DB220E2A89100F67532 /* RecipesDetailsViewController.swift in Sources */,
 				42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */,
+				AE18F40020E527B6007DC404 /* WatchController.swift in Sources */,
 				AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */,
 				42D609B520E321BC00349CB4 /* Category.swift in Sources */,
 			);
@@ -573,7 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = "WatchAndSee Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -595,7 +599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = "WatchAndSee Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -618,7 +622,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				IBSC_MODULE = WatchAndSee_Watch_Extension;
 				INFOPLIST_FILE = "WatchAndSee Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee.watchkitapp;
@@ -637,7 +641,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				IBSC_MODULE = WatchAndSee_Watch_Extension;
 				INFOPLIST_FILE = "WatchAndSee Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee.watchkitapp;
@@ -775,7 +779,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = WatchAndSee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -795,7 +799,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = WatchAndSee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
