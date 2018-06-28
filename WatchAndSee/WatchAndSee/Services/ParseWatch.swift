@@ -27,7 +27,6 @@ class ParseWatch: NSObject {
 
         valueToSend["steps"] = currentArray
 
-//        print("\n\n\n\nHey you mtf:\n\(valueToSend)\n\n\n\n")
         return valueToSend
     }
 
@@ -36,10 +35,8 @@ class ParseWatch: NSObject {
         var steps: [Step] = []
 
         guard let data = dataArray["steps"] else { return steps }
-//        print("\n\nlook at this:\n\(data)")
 
         guard let singleData = data as? [[String: Any]] else { return steps }
-//        print("\n\nomfg this is happening:\n\(singleData)\n\n\n")
 
         for stp in singleData {
             guard let text = stp["Texto"] as? String else { return steps }

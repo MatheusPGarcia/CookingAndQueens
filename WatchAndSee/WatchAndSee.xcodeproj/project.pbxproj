@@ -35,6 +35,7 @@
 		AE1C084D20DACBAD00B0BB14 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C084C20DACBAD00B0BB14 /* NotificationController.swift */; };
 		AE1C084F20DACBAE00B0BB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C084E20DACBAE00B0BB14 /* Assets.xcassets */; };
 		AE1C085420DACBAE00B0BB14 /* WatchAndSee Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AE1C083720DACBAC00B0BB14 /* WatchAndSee Watch.app */; };
+		AE4D7F3520E56382001E60BE /* ParseWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */; };
 		AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7EE120D9869E0050C176 /* AppDelegate.swift */; };
 		AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F7EE320D9869F0050C176 /* ViewController.swift */; };
 		AE4F7EE720D9869F0050C176 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EE520D9869F0050C176 /* Main.storyboard */; };
@@ -500,6 +501,7 @@
 				AE1C084D20DACBAD00B0BB14 /* NotificationController.swift in Sources */,
 				AE1C084B20DACBAD00B0BB14 /* ExtensionDelegate.swift in Sources */,
 				AEFE4E5A20E1856D00D5688E /* Step.swift in Sources */,
+				AE4D7F3520E56382001E60BE /* ParseWatch.swift in Sources */,
 				AE1C084920DACBAD00B0BB14 /* InterfaceController.swift in Sources */,
 				AEFE4E5920E1856800D5688E /* Recipes.swift in Sources */,
 			);

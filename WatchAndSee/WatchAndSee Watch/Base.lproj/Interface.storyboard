@@ -12,33 +12,7 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target">
-                    <items>
-                        <button width="1" alignment="left" title="Enviar" id="HYT-Qc-GMQ">
-                            <connections>
-                                <action selector="sendToiPhoneWasPressed" destination="AgC-eL-Hgc" id="kkJ-sz-PgK"/>
-                            </connections>
-                        </button>
-                        <group width="1" alignment="left" verticalAlignment="bottom" id="Dcq-I4-dkY">
-                            <items>
-                                <button width="0.5" alignment="right" verticalAlignment="bottom" title="+" id="hae-yA-CbU">
-                                    <connections>
-                                        <action selector="addWasPressed" destination="AgC-eL-Hgc" id="dZF-AZ-e34"/>
-                                    </connections>
-                                </button>
-                                <button width="0.5" alignment="left" verticalAlignment="bottom" title="-" id="tA7-qY-wjc">
-                                    <connections>
-                                        <action selector="subWasPressed" destination="AgC-eL-Hgc" id="oGQ-wr-vaj"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
-                        <label alignment="center" verticalAlignment="center" text="Label" id="qKh-g1-f0t"/>
-                    </items>
-                    <connections>
-                        <outlet property="timeLabel" destination="qKh-g1-f0t" id="8qo-dT-rKS"/>
-                    </connections>
-                </controller>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
