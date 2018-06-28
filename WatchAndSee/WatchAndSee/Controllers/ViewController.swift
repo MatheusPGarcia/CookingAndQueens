@@ -12,9 +12,19 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var highlightImage: UIImageView!
+    @IBOutlet weak var hightlightLabel: UILabel!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
 
     var databaseManager: DatabaseService!
-    var recipies = [[Recipes]]()
+    var objManager = ObjectsManager()
+
+    var indicator = 0
+    var doneLoading = false
+    var recipes = [Recipes]()
+    var categories = [Category]()
+    var rec: Recipes?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,24 +32,59 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        highlightImage.layer.cornerRadius = 5
-        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        setupHighlightRecipe()
+        setupCategories(name: "Para impressionar as visitas",
+                        elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
+        setupCategories(name: "Almoço requintado",
+                        elements: ["Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
 
         databaseManager = DatabaseService.shared
 
         self.view.isUserInteractionEnabled = false
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        databaseManager.createRecipeObject(completion: { receivedRecipe in
 
-        databaseManager.createRecipeObject(recipeName: "Bolo Simples", completion: { receivedRecipe in
-
-            if let recipe = receivedRecipe {
-                print(recipe)
+            //finished retrieving data from database
+            if receivedRecipe != nil {
+                self.recipes = receivedRecipe!
+                self.view.isUserInteractionEnabled = true
+                self.activityIndicator.stopAnimating()
+                self.loadingView.isHidden = true
+                self.loadingLabel.isHidden = true
+                self.categories = self.objManager.createCategories(self.recipes, self.categories)
+                self.tableView.reloadData()
             }
-            self.view.isUserInteractionEnabled = true
         })
     }
-}
-// swiftlint:disable force_cast
 
+    func setupHighlightRecipe() {
+        highlightImage.layer.cornerRadius = 5
+        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        highlightImage.image = UIImage(named: "Ratatouille")
+        hightlightLabel.text = "Ratatouille"
+    }
+
+    func setupCategories(name: String, elements: [String]) {
+        var category = Category()
+
+        category.setValues(name, elements)
+        categories.append(category)
+    }
+
+    func goToDetails(recipe: Recipes) {
+        self.rec = recipe
+        performSegue(withIdentifier: "recipeDetails", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let recipeDetailsVC = segue.destination as? RecipesDetailsViewController {
+            recipeDetailsVC.recipe = self.rec!
+        }
+    }
+}
+
+// swiftlint:disable force_cast
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -48,31 +93,41 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryCell
 
+        cell.setup(category: self.categories[indexPath.section])
+        cell.delegate = self
+
         return cell
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section Title \(section)"
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let titleLabel = UILabel()
+        titleLabel.textAlignment = .left
+        titleLabel.font = UIFont(name: "LouisGeorgeCafe", size: 16)
+        titleLabel.text = self.categories[section].name
+        titleLabel.frame = CGRect(x: 20, y: 0, width: view.bounds.width, height: 30)
+        headerView.backgroundColor = .white
+        headerView.addSubview(titleLabel)
+        return headerView
     }
 
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        let titleLabel = UILabel()
-//        titleLabel.backgroundColor = .white
-//        titleLabel.textColor = .black
-//        titleLabel.textAlignment = .left
-//        titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-//        titleLabel.frame = CGRect(x: 10, y: -15, width: view.bounds.width, height: 70)
-//        titleLabel.text = "Header"
-//        headerView.addSubview(titleLabel)
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("INDEX PATH PRESSED AT \(indexPath)IN TABLE\n")
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return categories.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 180
     }
+}
+
+extension ViewController: RecipeDelegate {
+
+    func presentData(recipe: Recipes) {
+        goToDetails(recipe: recipe)
+    }
+
 }

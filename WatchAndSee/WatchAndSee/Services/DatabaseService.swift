@@ -22,18 +22,36 @@ class DatabaseService: NSObject {
         ref = Database.database().reference()
     }
 
-    func createRecipeObject(recipeName: String, completion: @escaping (_ response: Recipes?) -> Void) {
+//    func createRecipeObject(recipeName: [String], completion: @escaping (_ response: Recipes?) -> Void) {
+//
+//        for element in recipeName {
+//            ref.child("Recipes").child(element).observeSingleEvent(of: .value) { snapshot in
+//                guard let snapshotDic = snapshot.value as? [String: Any] else {
+//                    print("deu merda")
+//                    completion(nil)
+//                    return
+//                }
+//                let recipe = self.parseRef.parseRecipe(snapshotDic)
+//
+//                completion(recipe)
+//            }
+//        }
+//    }
+    func createRecipeObject(completion: @escaping (_ response: [Recipes]?) -> Void) {
+        var ingredients = [Recipes]()
 
-        ref.child("Recipes").child(recipeName).observeSingleEvent(of: .value) { snapshot in
-            guard let snapshotDic = snapshot.value as? [String: Any] else {
-                print("deu merda")
-                completion(nil)
-                return
+        ref.child("Recipes").observeSingleEvent(of: .value) { snapshot in
+            for children in snapshot.children.allObjects {
+                if let childSnapshot = children as? DataSnapshot,
+                    let recipeJSON = childSnapshot.value as? [String: Any] {
+                    let recipe = self.parseRef.parseRecipe(recipeJSON)
+                    print(recipe)
+                    ingredients.append(recipe)
+                }
+
             }
-            let recipe = self.parseRef.parseRecipe(snapshotDic)
-
-            completion(recipe)
+            completion(ingredients)
         }
-    }
 
+    }
 }
