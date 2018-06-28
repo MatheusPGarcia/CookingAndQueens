@@ -43,7 +43,6 @@
 		AE4F7EEC20D986A10050C176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EEB20D986A10050C176 /* Assets.xcassets */; };
 		AE4F7EEF20D986A10050C176 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EED20D986A10050C176 /* LaunchScreen.storyboard */; };
 		AEB0091120DD42810089224B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
-		AEFE4E5620E175C900D5688E /* WatchTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE4E5520E175C900D5688E /* WatchTestViewController.swift */; };
 		AEFE4E5820E17ECE00D5688E /* ParseWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */; };
 		AEFE4E5920E1856800D5688E /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
 		AEFE4E5A20E1856D00D5688E /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
@@ -131,7 +130,6 @@
 		AE4F7EEE20D986A10050C176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE4F7EF020D986A20050C176 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB0091020DD42810089224B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
-		AEFE4E5520E175C900D5688E /* WatchTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTestViewController.swift; sourceTree = "<group>"; };
 		AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWatch.swift; sourceTree = "<group>"; };
 		C48E515B42E128347C9FC879 /* Pods-WatchAndSee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,7 +170,6 @@
 				42453C7420E294BF00DD0400 /* Cells */,
 				AE4F7EE320D9869F0050C176 /* ViewController.swift */,
 				42501DB120E2A89100F67532 /* RecipesDetailsViewController.swift */,
-				AEFE4E5520E175C900D5688E /* WatchTestViewController.swift */,
 				AE18F3FF20E527B6007DC404 /* WatchController.swift */,
 			);
 			path = Controllers;
@@ -516,7 +513,6 @@
 				AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */,
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
 				AEB0091120DD42810089224B /* Step.swift in Sources */,
-				AEFE4E5620E175C900D5688E /* WatchTestViewController.swift in Sources */,
 				42D609BB20E3F9AF00349CB4 /* RecipeDetailsCell.swift in Sources */,
 				4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */,
 				42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */,

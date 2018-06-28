@@ -23,9 +23,7 @@ class WatchController: NSObject {
         do {
             let valueToSend = data
             let delegate = AppDelegate()
-            delegate.sendValue(data: valueToSend)
-            print("Sucesso")
-            return true
+            return delegate.sendValue(data: valueToSend)
         } catch {
             print("oi: \(error)")
             return false

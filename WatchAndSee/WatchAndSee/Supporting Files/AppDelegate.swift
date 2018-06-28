@@ -131,7 +131,7 @@ extension AppDelegate: WCSessionDelegate {
         }
     }
 
-    func sendValue(data: [String: Any?]) {
+    func sendValue(data: [String: Any?]) -> Bool {
 
         if WCSession.isSupported() {
 
@@ -142,10 +142,12 @@ extension AppDelegate: WCSessionDelegate {
                     let valueToSend = data
                     try session.updateApplicationContext(valueToSend)
                     print("Sucesso")
+                    return true
                 } catch {
                     print("\(error)")
                 }
             }
         }
+        return false
     }
 }

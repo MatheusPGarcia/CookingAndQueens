@@ -14,7 +14,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     // swiftlint:disable all
 
     func applicationDidFinishLaunching() {
-        self.setupWatchConnectivity()
+//        self.setupWatchConnectivity()
     }
 
     func applicationDidBecomeActive() {
@@ -52,42 +52,42 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     // swiftlint:enable all
 }
-
-extension ExtensionDelegate: WCSessionDelegate {
-
-    func session(_ session: WCSession,
-                 activationDidCompleteWith activationState: WCSessionActivationState,
-                 error: Error?) {
-
-        if let error = error {
-            print("WC Session activation failed with error: \(error.localizedDescription)")
-            return
-        }
-
-        switch activationState {
-        case .activated:
-            print("WC Session state is: Activated")
-        case .inactive:
-            print("WC Session state is: Inactive")
-        case .notActivated:
-            print("WC Session state is: Not Activated")
-        }
-    }
-
-    func setupWatchConnectivity() {
-        if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
-    }
-
-    func session(_ session: WCSession,
-                 didReceiveApplicationContext applicationContext: [String: Any]) {
-
-        DispatchQueue.main.async {
-            InterfaceController.shared.setup(data: applicationContext)
-            print("This is it, the apocalypse:\n\n\(applicationContext)")
-        }
-    }
-}
+//
+//extension ExtensionDelegate: WCSessionDelegate {
+//
+//    func session(_ session: WCSession,
+//                 activationDidCompleteWith activationState: WCSessionActivationState,
+//                 error: Error?) {
+//
+//        if let error = error {
+//            print("WC Session activation failed with error: \(error.localizedDescription)")
+//            return
+//        }
+//
+//        switch activationState {
+//        case .activated:
+//            print("WC Session state is: Activated")
+//        case .inactive:
+//            print("WC Session state is: Inactive")
+//        case .notActivated:
+//            print("WC Session state is: Not Activated")
+//        }
+//    }
+//
+//    func setupWatchConnectivity() {
+//        if WCSession.isSupported() {
+//            let session = WCSession.default
+//            session.delegate = self
+//            session.activate()
+//        }
+//    }
+//
+//    func session(_ session: WCSession,
+//                 didReceiveApplicationContext applicationContext: [String: Any]) {
+//
+//        DispatchQueue.main.async {
+//            InterfaceController.shared.setup(data: applicationContext)
+//            print("This is it, the apocalypse:\n\n\(applicationContext)")
+//        }
+//    }
+//}

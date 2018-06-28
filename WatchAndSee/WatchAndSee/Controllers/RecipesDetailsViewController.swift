@@ -60,7 +60,7 @@ class RecipesDetailsViewController: UIViewController {
         let watchController = WatchController()
 
         if let recipe = recipe {
-            
+
             if watchController.prepareToSendValue(recipe: recipe) {
 
                 let alertController = UIAlertController(title: "Sucesso",

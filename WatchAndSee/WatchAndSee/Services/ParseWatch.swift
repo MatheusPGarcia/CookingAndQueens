@@ -13,16 +13,17 @@ class ParseWatch: NSObject {
     func sendToWatch(recipe: Recipes) -> [String: Any?] {
 
         var valueToSend: [String: Any] = [:]
-        var currentArray = valueToSend["items"] as? [[String: Any]] ?? [[String: Any]]()
+        var currentArray = valueToSend["steps"] as? [[String: Any]] ?? [[String: Any]]()
 
         for step in recipe.steps {
 
-            let step: [String: Any] = [
-                "Texto": "\(step.text)",
-                "Tempo": "\(String(describing: step.time))"
-            ]
+            var dict = [String: Any]()
+            dict["Texto"] = step.text
+            if let time = step.time {
+                dict["Tempo"] = time
+            }
 
-            currentArray.append(step)
+            currentArray.append(dict)
         }
 
         valueToSend["steps"] = currentArray
@@ -40,7 +41,7 @@ class ParseWatch: NSObject {
 
         for stp in singleData {
             guard let text = stp["Texto"] as? String else { return steps }
-            guard let time = stp["Tempo"] as? Int else { return steps }
+            let time = stp["Tempo"] as? Int
 
             let newStep = Step(text: text, time: time)
             steps.append(newStep)
