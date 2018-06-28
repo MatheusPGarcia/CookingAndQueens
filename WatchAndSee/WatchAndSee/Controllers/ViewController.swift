@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         setupCategories(name: "Para impressionar as visitas",
                         elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
         setupCategories(name: "Almoço requintado",
-                        elements: ["Bolo Simples", "Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
+                        elements: ["Sanduíche de Carne de Panela na Travessa", "Berinjela à parmegiana", "Rabada"])
 
         databaseManager = DatabaseService.shared
 
