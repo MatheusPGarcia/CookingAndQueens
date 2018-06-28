@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var highlightButton: UIButton!
 
     var databaseManager: DatabaseService!
     var objManager = ObjectsManager()
 
-    var indicator = 0
-    var doneLoading = false
+    var highlightRecipe: Recipes!
     var recipes = [Recipes]()
     var categories = [Category]()
     var rec: Recipes?
@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        setupHighlightRecipe()
         setupCategories(name: "Para impressionar as visitas",
                         elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
         setupCategories(name: "Almoço requintado",
@@ -54,15 +53,36 @@ class ViewController: UIViewController {
                 self.loadingLabel.isHidden = true
                 self.categories = self.objManager.createCategories(self.recipes, self.categories)
                 self.tableView.reloadData()
+                self.setupHighlightRecipe()
             }
         })
     }
 
+    @IBAction func highlightPressed(_ sender: Any) {
+        goToDetails(recipe: highlightRecipe)
+    }
+
     func setupHighlightRecipe() {
+
+        let search = "Torta de Frango"
+        let result = recipes.filter({ (rec) -> Bool in
+            rec.name.lowercased().contains(search.lowercased())
+        })
         highlightImage.layer.cornerRadius = 5
         highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        highlightImage.image = UIImage(named: "Ratatouille")
-        hightlightLabel.text = "Ratatouille"
+        highlightImage.image = setImage(url: result[0].photo)
+        hightlightLabel.text = result[0].name
+        highlightRecipe = result[0]
+    }
+
+    func setImage(url: String) -> UIImage {
+        var data: Data
+        // swiftlint:disable force_try
+
+        let imgURL = URL(string: url)
+        data = try! Data(contentsOf: imgURL!)
+        let image = UIImage(data: data)
+        return image!
     }
 
     func setupCategories(name: String, elements: [String]) {
