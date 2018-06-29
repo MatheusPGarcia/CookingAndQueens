@@ -8,11 +8,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="LouisGeorgeCafe.ttf">
+            <string>LouisGeorgeCafe</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Interface Controller-->
+        <!--Chef Yourself-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target">
+                <controller title="Chef Yourself" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target" propertyAccessControl="none">
                     <items>
                         <imageView alignment="left" id="rSI-mu-c8y"/>
                         <label alignment="center" verticalAlignment="bottom" text="Selecione uma receita no seu celular e comece a cozinhar!" textAlignment="center" numberOfLines="0" id="c7n-K1-u7O"/>
@@ -44,6 +49,20 @@
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
+        <!--Interface Controller-->
+        <scene sceneID="OCR-id-fYf">
+            <objects>
+                <controller id="4mY-y2-VQJ">
+                    <items>
+                        <timer width="136" height="54" alignment="center" verticalAlignment="center" format="abbreviated" previewedSeconds="10759" id="eyj-QE-dYr">
+                            <fontDescription key="font" name="LouisGeorgeCafe" family="Louis George Cafe" pointSize="39"/>
+                            <calendarUnit key="units" hour="YES" minute="YES"/>
+                        </timer>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="29"/>
+        </scene>
         <!--StepInterfaceController-->
         <scene sceneID="sFP-wB-6cE">
             <objects>
@@ -59,4 +78,5 @@
             <point key="canvasLocation" x="468" y="345"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.4701308978" blue="0.1825521058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
