@@ -123,7 +123,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView()
         let titleLabel = UILabel()
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont(name: "LouisGeorgeCafe", size: 16)
+        titleLabel.font = UIFont(name: "OleoScript-Regular", size: 19)
         titleLabel.text = self.categories[section].name
         titleLabel.frame = CGRect(x: 20, y: 0, width: view.bounds.width, height: 30)
         headerView.backgroundColor = .white
