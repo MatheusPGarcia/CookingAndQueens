@@ -12,7 +12,12 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target">
+                    <items>
+                        <imageView alignment="left" id="rSI-mu-c8y"/>
+                        <label alignment="center" verticalAlignment="bottom" text="Selecione uma receita no seu celular e comece a cozinhar!" textAlignment="center" numberOfLines="0" id="c7n-K1-u7O"/>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
