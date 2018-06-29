@@ -11,7 +11,8 @@ import UIKit
 class RecipeDetailsCell: UITableViewCell {
 
     @IBOutlet weak var ingredientLabel: UILabel!
-
+    @IBOutlet weak var indexLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

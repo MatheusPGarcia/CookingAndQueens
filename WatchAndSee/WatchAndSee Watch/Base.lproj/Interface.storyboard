@@ -19,12 +19,12 @@
             <objects>
                 <controller title="Chef Yourself" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target" propertyAccessControl="none">
                     <items>
-                        <imageView alignment="left" id="rSI-mu-c8y"/>
-                        <label alignment="center" verticalAlignment="bottom" text="Selecione uma receita no seu celular e comece a cozinhar!" textAlignment="center" numberOfLines="0" id="c7n-K1-u7O"/>
+                        <imageView width="69" height="69" alignment="center" verticalAlignment="center" image="icon" contentMode="redraw" id="rSI-mu-c8y"/>
+                        <label alignment="center" verticalAlignment="center" text="Selecione uma receita no seu celular e comece a cozinhar!" textAlignment="center" numberOfLines="0" id="c7n-K1-u7O"/>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="341"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -68,7 +68,7 @@
             <objects>
                 <controller identifier="StepInterfaceController" id="v0x-ls-vRo" customClass="StepInterfaceController" customModule="WatchAndSee_Watch_Extension">
                     <items>
-                        <label width="136" height="163" alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="oAe-iU-Qrr"/>
+                        <label width="1" alignment="left" verticalAlignment="center" text="Label" textAlignment="left" numberOfLines="0" id="oAe-iU-Qrr"/>
                     </items>
                     <connections>
                         <outlet property="stepTextLabel" destination="oAe-iU-Qrr" id="Ghv-d6-Sch"/>
