@@ -42,20 +42,28 @@ class ViewController: UIViewController {
         self.view.isUserInteractionEnabled = false
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        databaseManager.createRecipeObject(completion: { receivedRecipe in
 
-            //finished retrieving data from database
-            if receivedRecipe != nil {
-                self.recipes = receivedRecipe!
-                self.view.isUserInteractionEnabled = true
-                self.activityIndicator.stopAnimating()
-                self.loadingView.isHidden = true
-                self.loadingLabel.isHidden = true
-                self.categories = self.objManager.createCategories(self.recipes, self.categories)
-                self.tableView.reloadData()
-                self.setupHighlightRecipe()
-            }
-        })
+        if InternetConnection.checkCconnection() {
+            databaseManager.createRecipeObject(completion: { receivedRecipe in
+
+                //finished retrieving data from database
+                if receivedRecipe != nil {
+                    self.recipes = receivedRecipe!
+                    self.view.isUserInteractionEnabled = true
+                    self.activityIndicator.stopAnimating()
+                    self.loadingView.isHidden = true
+                    self.loadingLabel.isHidden = true
+                    self.categories = self.objManager.createCategories(self.recipes, self.categories)
+                    self.tableView.reloadData()
+                    self.setupHighlightRecipe()
+                }
+            })
+        } else {
+            activityIndicator.stopAnimating()
+            self.loadingView.alpha = 0.99
+            self.loadingLabel.text = "Sem conexão de Internet"
+        }
+
     }
 
     @IBAction func highlightPressed(_ sender: Any) {

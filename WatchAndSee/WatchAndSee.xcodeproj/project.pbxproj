@@ -45,6 +45,7 @@
 		AE85D4E720E651C20037CBCC /* StepInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D4E620E651C20037CBCC /* StepInterfaceController.swift */; };
 		AEB0091120DD42810089224B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
 		AEBEC2CB20E693D10038EE62 /* TimerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEC2CA20E693D10038EE62 /* TimerInterfaceController.swift */; };
+		AEBEC2CD20E6B00A0038EE62 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEC2CC20E6B00A0038EE62 /* InternetConnection.swift */; };
 		AEFE4E5820E17ECE00D5688E /* ParseWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */; };
 		AEFE4E5920E1856800D5688E /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
 		AEFE4E5A20E1856D00D5688E /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
@@ -134,6 +135,7 @@
 		AE85D4E620E651C20037CBCC /* StepInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepInterfaceController.swift; sourceTree = "<group>"; };
 		AEB0091020DD42810089224B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		AEBEC2CA20E693D10038EE62 /* TimerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInterfaceController.swift; sourceTree = "<group>"; };
+		AEBEC2CC20E6B00A0038EE62 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWatch.swift; sourceTree = "<group>"; };
 		C48E515B42E128347C9FC879 /* Pods-WatchAndSee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				AE4F7EE120D9869E0050C176 /* AppDelegate.swift */,
+				AEBEC2CC20E6B00A0038EE62 /* InternetConnection.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */,
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
 				AEB0091120DD42810089224B /* Step.swift in Sources */,
+				AEBEC2CD20E6B00A0038EE62 /* InternetConnection.swift in Sources */,
 				42D609BB20E3F9AF00349CB4 /* RecipeDetailsCell.swift in Sources */,
 				4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */,
 				42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */,
