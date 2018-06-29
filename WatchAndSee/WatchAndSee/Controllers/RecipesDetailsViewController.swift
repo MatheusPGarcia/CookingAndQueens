@@ -79,7 +79,7 @@ class RecipesDetailsViewController: UIViewController {
             if watchController.prepareToSendValue(recipe: recipe) {
 
                 let alertController = UIAlertController(title: "Sucesso",
-                                                        message: "",
+                                                        message: "Verifique seu Apple Watch",
                                                         preferredStyle: .alert)
 
                 let actionOk = UIAlertAction(title: "OK",

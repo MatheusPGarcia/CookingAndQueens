@@ -19,12 +19,12 @@
             <objects>
                 <controller title="Chef Yourself" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchAndSee_Watch" customModuleProvider="target" propertyAccessControl="none">
                     <items>
-                        <imageView width="69" height="69" alignment="center" verticalAlignment="center" image="icon" contentMode="redraw" id="rSI-mu-c8y"/>
+                        <imageView alignment="center" verticalAlignment="center" image="RecipeIcon" id="THz-bh-vPI"/>
                         <label alignment="center" verticalAlignment="center" text="Selecione uma receita no seu celular e comece a cozinhar!" textAlignment="center" numberOfLines="0" id="c7n-K1-u7O"/>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="341"/>
+            <point key="canvasLocation" x="220" y="177"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -49,16 +49,25 @@
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
-        <!--Interface Controller-->
+        <!--TimerInterfaceController-->
         <scene sceneID="OCR-id-fYf">
             <objects>
-                <controller id="4mY-y2-VQJ">
+                <controller identifier="TimerInterfaceController" backgroundImage="Background" contentMode="center" id="4mY-y2-VQJ" customClass="TimerInterfaceController" customModule="WatchAndSee_Watch_Extension">
                     <items>
-                        <timer width="136" height="54" alignment="center" verticalAlignment="center" format="abbreviated" previewedSeconds="10759" id="eyj-QE-dYr">
-                            <fontDescription key="font" name="LouisGeorgeCafe" family="Louis George Cafe" pointSize="39"/>
-                            <calendarUnit key="units" hour="YES" minute="YES"/>
+                        <timer width="136" height="54" alignment="center" verticalAlignment="center" textAlignment="center" format="abbreviated" previewedSeconds="10759" id="eyj-QE-dYr">
+                            <fontDescription key="font" name="LouisGeorgeCafe" family="Louis George Cafe" pointSize="27"/>
                         </timer>
+                        <button width="0.5" alignment="center" verticalAlignment="bottom" title="Start" id="Jce-8V-52t">
+                            <color key="backgroundColor" red="1" green="0.4701308978" blue="0.1825521058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="startTimer" destination="4mY-y2-VQJ" id="Xtq-jB-wB2"/>
+                            </connections>
+                        </button>
                     </items>
+                    <connections>
+                        <outlet property="interactiveButton" destination="Jce-8V-52t" id="ceA-fu-BwX"/>
+                        <outlet property="timer" destination="eyj-QE-dYr" id="J8M-ec-6Oj"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="468" y="29"/>
@@ -66,7 +75,7 @@
         <!--StepInterfaceController-->
         <scene sceneID="sFP-wB-6cE">
             <objects>
-                <controller identifier="StepInterfaceController" id="v0x-ls-vRo" customClass="StepInterfaceController" customModule="WatchAndSee_Watch_Extension">
+                <controller identifier="StepInterfaceController" backgroundImage="Background" contentMode="center" id="v0x-ls-vRo" customClass="StepInterfaceController" customModule="WatchAndSee_Watch_Extension">
                     <items>
                         <label width="1" alignment="left" verticalAlignment="center" text="Label" textAlignment="left" numberOfLines="0" id="oAe-iU-Qrr"/>
                     </items>

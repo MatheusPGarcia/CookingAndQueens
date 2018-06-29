@@ -50,11 +50,26 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 //                print("Oh mamma mia, I like to use breakpoints, but xuh no, he prefers prints:\n\(self.steps)")
 
                 var context: [String] = []
+                var controllers: [String] = []
+
                 for currentStep in self.steps {
+
                     let text = currentStep.text
                     context.append(text)
+
+                    let stepControl = String("StepInterfaceController")
+                    controllers.append(stepControl)
+
+                    if let time = currentStep.time {
+                        let timeValue = String(time)
+                        context.append(timeValue)
+
+                        let control = String("TimerInterfaceController")
+                        controllers.append(control)
+                    }
                 }
-                let controllers = [String](repeating: "StepInterfaceController", count: self.steps.count)
+
+//                let controllers = [String](repeating: "StepInterfaceController", count: self.steps.count)
                 self.presentController(withNames: controllers, contexts: context)
             }
         }
