@@ -30,6 +30,8 @@ class TimerInterfaceController: WKInterfaceController {
 
             let time = Date(timeIntervalSinceNow: interval)
             timer.setDate(time)
+            WKInterfaceDevice.current().play(.success)
+
         }
     }
 
