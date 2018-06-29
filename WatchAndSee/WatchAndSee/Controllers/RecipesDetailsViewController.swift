@@ -54,10 +54,45 @@ class RecipesDetailsViewController: UIViewController {
         let image = UIImage(data: data)
         return image!
     }
+
     @IBAction func startRecipeButtonPressed(_ sender: Any) {
-        
+
+        let watchController = WatchController()
+
+        if let recipe = recipe {
+
+            if watchController.prepareToSendValue(recipe: recipe) {
+
+                let alertController = UIAlertController(title: "Sucesso",
+                                                        message: "",
+                                                        preferredStyle: .alert)
+
+                let actionOk = UIAlertAction(title: "OK",
+                                            style: .default,
+                                            handler: nil)
+
+                alertController.addAction(actionOk)
+
+                self.present(alertController, animated: true, completion: nil)
+
+            } else {
+
+                let alertController = UIAlertController(title: "Erro",
+                                                        message: "",
+                                                        preferredStyle: .alert)
+
+                let actionOk = UIAlertAction(title: "OK",
+                                             style: .default,
+                                             handler: nil)
+
+                alertController.addAction(actionOk)
+
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
 }
+
 // swiftlint:disable force_cast
 
 extension RecipesDetailsViewController: UITableViewDelegate, UITableViewDataSource {

@@ -46,7 +46,8 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     // swiftlint:disable force_cast
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCell
         cell.recipeLabel.text = category?.recipes[indexPath.row].name
         cell.recipeImage.image = setImage(url: (category?.recipes[indexPath.row].photo)!)
@@ -77,7 +78,9 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
 }
 
 extension CategoryCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: self.frame.height)
     }
 }

@@ -12,31 +12,60 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
-    @available(watchOS 2.2, *)
-    public func session(_ session: WCSession,
-                        activationDidCompleteWith activationState: WCSessionActivationState,
-                        error: Error?) {
-    }
+    var steps: [Step] = []
 
-    var value = 0
-    var session: WCSession!
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState,
+                 error: Error?) {
 
-    @IBOutlet var timeLabel: WKInterfaceLabel!
+            if let error = error {
+                print("WC Session activation failed with error: \(error.localizedDescription)")
+                return
+            }
 
-    override init() {
-        super.init()
-        if WCSession.isSupported() {
-            session = WCSession.default
-            session.delegate = self
-            session.activate()
+            switch activationState {
+            case .activated:
+                print("WC Session state is: Activated")
+            case .inactive:
+                print("WC Session state is: Inactive")
+            case .notActivated:
+                print("WC Session state is: Not Activated")
+            }
         }
-    }
+
+        func setupWatchConnectivity() {
+            if WCSession.isSupported() {
+                let session = WCSession.default
+                session.delegate = self
+                session.activate()
+            }
+        }
+
+        func session(_ session: WCSession,
+                     didReceiveApplicationContext applicationContext: [String: Any]) {
+
+            DispatchQueue.main.async {
+                let parser = ParseWatch()
+                self.steps = parser.decodeInWatch(applicationContext)
+//                print("Oh mamma mia, I like to use breakpoints, but xuh no, he prefers prints:\n\(self.steps)")
+
+                var context: [String] = []
+                for currentStep in self.steps {
+                    let text = currentStep.text
+                    context.append(text)
+                }
+                let controllers = [String](repeating: "StepInterfaceController", count: self.steps.count)
+                self.presentController(withNames: controllers, contexts: context)
+            }
+        }
+
+    private override init() { }
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
-        timeLabel.setText("\(value)")
         // Configure interface objects here.
+        setupWatchConnectivity()
     }
 
     override func willActivate() {
@@ -47,47 +76,5 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-    }
-
-    fileprivate func updateLabel (value: Int) {
-        timeLabel.setText("\(value)")
-    }
-
-    internal func session(_ session: WCSession,
-                          didReceiveApplicationContext applicationContext: [String: Any]) {
-
-        let sessionValue = applicationContext["Value"] as? Int
-
-        DispatchQueue.main.async {
-
-            guard let safeValue = sessionValue else { return }
-
-            self.value = safeValue
-            self.updateLabel(value: self.value)
-        }
-    }
-
-    func sendValue() {
-
-        do {
-            let valueToSend = ["Value": value]
-            try session.updateApplicationContext(valueToSend)
-        } catch {
-            print("error")
-        }
-    }
-
-    @IBAction func subWasPressed() {
-        value -= 1
-        updateLabel(value: value)
-    }
-
-    @IBAction func addWasPressed() {
-        value +=  1
-        updateLabel(value: value)
-    }
-
-    @IBAction func sendToiPhoneWasPressed() {
-        sendValue()
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        setupWatchConnectivity()
+
         return true
     }
 
@@ -93,4 +96,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     // swiftlint:enable all
+}
+
+extension AppDelegate: WCSessionDelegate {
+
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState,
+                 error: Error?) {
+
+        if let error = error {
+            print("WC Session activation failed with error: " +
+                  "\(error.localizedDescription)")
+            return
+        }
+
+        print("WC Session activated with state: " +
+              "\(activationState.rawValue)")
+    }
+
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("Session inactive")
+    }
+
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("Session deactivate")
+        WCSession.default.activate()
+    }
+
+    func setupWatchConnectivity() {
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+    }
+
+    func sendValue(data: [String: Any?]) -> Bool {
+
+        if WCSession.isSupported() {
+
+            let session = WCSession.default
+            if session.isWatchAppInstalled {
+
+                do {
+                    let valueToSend = data
+                    try session.updateApplicationContext(valueToSend)
+                    print("Sucesso")
+                    return true
+                } catch {
+                    print("\(error)")
+                }
+            }
+        }
+        return false
+    }
 }
