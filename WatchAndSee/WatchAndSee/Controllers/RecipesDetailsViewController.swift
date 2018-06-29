@@ -121,6 +121,7 @@ extension RecipesDetailsViewController: UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeDetailsCell") as! RecipeDetailsCell
+        cell.isUserInteractionEnabled = false
         cell.ingredientLabel.text = self.items[indexPath.section][indexPath.row]
         cell.indexLabel.text = String(indexPath.row + 1)
         return cell
