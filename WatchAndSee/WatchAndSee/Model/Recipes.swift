@@ -8,29 +8,21 @@
 
 import Foundation
 
-struct Recipes: Codable {
+struct Recipes {
 
     var name: String
     var ingredients: [String]
     var time: String
     var rendiment: String
+    var photo: String
     var steps: [Step]
 
-    init() {
-        self.name = ""
-        self.ingredients = []
-        self.time = ""
-        self.rendiment = ""
-        self.steps = []
-    }
-
-    mutating func setValues(_ name: String, _ ing: [String], _ time: String, _ rendiment: String, _ steps: [Step]) {
+    init(name: String, ingredients: [String], time: String, rendiment: String, photo: String, steps: [Step]) {
         self.name = name
-        self.ingredients = ing
+        self.ingredients = ingredients
         self.time = time
         self.rendiment = rendiment
+        self.photo = photo
         self.steps = steps
-
     }
-
 }
