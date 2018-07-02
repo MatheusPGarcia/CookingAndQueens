@@ -12,15 +12,14 @@ class ParseManager: NSObject {
     var ingredients = [String]()
     var steps = [Step]()
     var recipe: Recipes?
-    // swiftlint:disable force_cast
 
     func parseRecipe(_ snapshotDic: [String: Any]) -> Recipes {
-        let name = snapshotDic["nome"] as! String
-        let time = snapshotDic["tempo"] as! String
-        let rendiment = snapshotDic["rendimento"] as! String
+        let name = snapshotDic["nome"] as? String
+        let time = snapshotDic["tempo"] as? String
+        let rendiment = snapshotDic["rendimento"] as? String
         let ing = snapshotDic["Ingredientes"]!
         let stp = snapshotDic["Passos"]
-        let photo = snapshotDic["foto"] as! String
+        let photo = snapshotDic["foto"] as? String
 
         ingredients = []
         steps = []
@@ -35,19 +34,17 @@ class ParseManager: NSObject {
             return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 
+        // sort steps by numerical order
         let sortedSteps = stpDictionary.sorted(by: {$0.0 < $1.0})
-
         for element in ingDictionary {
-            ingredients.append(element.value as! String)
+            ingredients.append((element.value as? String)!)
         }
 
         for element in sortedSteps {
-
             guard let stp = element.value as? [String: Any] else {
                 print("nao rolou")
                 return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
             }
-
             if let text = stp["Texto"] as? String {
 
                 let time = stp["Tempo"] as? Int
@@ -61,11 +58,11 @@ class ParseManager: NSObject {
             }
         }
 
-        return Recipes(name: name,
+        return Recipes(name: name!,
                        ingredients: ingredients,
-                       time: time,
-                       rendiment: rendiment,
-                       photo: photo,
+                       time: time!,
+                       rendiment: rendiment!,
+                       photo: photo!,
                        steps: steps)
     }
 }

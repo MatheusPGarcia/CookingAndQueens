@@ -15,13 +15,15 @@ class DatabaseService: NSObject {
     static var shared = DatabaseService()
     let parseRef = ParseManager()
     var ref: DatabaseReference!
-//    var recipes = Recipes()
 
     private override init() {
         super.init()
+
+        // reference to Firebase Database
         ref = Database.database().reference()
     }
 
+    //retrieve Data from database
     func createRecipeObject(completion: @escaping (_ response: [Recipes]?) -> Void) {
         var ingredients = [Recipes]()
 
@@ -35,6 +37,7 @@ class DatabaseService: NSObject {
                 }
 
             }
+            // guarantees it returns a value when it finishes retriving all data
             completion(ingredients)
         }
 

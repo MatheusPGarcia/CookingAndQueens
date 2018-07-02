@@ -10,8 +10,8 @@ import UIKit
 
 class ParseWatch: NSObject {
 
+    // return the value (dictionary) that will be sent to the apple watch
     func sendToWatch(recipe: Recipes) -> [String: Any?] {
-
         var valueToSend: [String: Any] = [:]
         var currentArray = valueToSend["steps"] as? [[String: Any]] ?? [[String: Any]]()
 
@@ -31,6 +31,7 @@ class ParseWatch: NSObject {
         return valueToSend
     }
 
+    // receives a dictionary and converts to Step array object
     func decodeInWatch(_ dataArray: [String: Any?]) -> [Step] {
 
         var steps: [Step] = []

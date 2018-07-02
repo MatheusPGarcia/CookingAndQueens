@@ -16,7 +16,7 @@ class ObjectsManager: UIViewController {
         super.viewDidLoad()
     }
 
-    //TO DO: ARRUMAR 
+    // creates recipes in each corresponding category
     func createCategories(_ recipes: [Recipes], _ categories: [Category]) -> [Category] {
         var auxCat = Category()
 
@@ -30,6 +30,7 @@ class ObjectsManager: UIViewController {
         return categoryList
     }
 
+    // filters all recipes to return the right recipes to each category
     func getElements(_ elements: [String], _ recipes: [Recipes]) -> [Recipes] {
         var result = [Recipes]()
         recipeList = []

@@ -46,7 +46,6 @@ class RecipesDetailsViewController: UIViewController {
 
         items.append((recipe?.ingredients)!)
         items.append(self.steps)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,8 +107,6 @@ class RecipesDetailsViewController: UIViewController {
     }
 }
 
-// swiftlint:disable force_cast
-
 extension RecipesDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items[section].count
@@ -120,11 +117,13 @@ extension RecipesDetailsViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeDetailsCell") as! RecipeDetailsCell
-        cell.isUserInteractionEnabled = false
-        cell.ingredientLabel.text = self.items[indexPath.section][indexPath.row]
-        cell.indexLabel.text = String(indexPath.row + 1)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeDetailsCell") as? RecipeDetailsCell {
+            cell.isUserInteractionEnabled = false
+            cell.ingredientLabel.text = self.items[indexPath.section][indexPath.row]
+            cell.indexLabel.text = String(indexPath.row + 1)
+            return cell
+        }
+        return RecipeDetailsCell()
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50

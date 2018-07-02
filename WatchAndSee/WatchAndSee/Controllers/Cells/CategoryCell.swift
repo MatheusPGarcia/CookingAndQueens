@@ -30,13 +30,6 @@ class CategoryCell: UITableViewCell {
         self.category = category
         self.collectionView.reloadData()
     }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-//    }
-
 }
 
 extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -44,34 +37,36 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  (self.category?.recipes.count)!
     }
-    // swiftlint:disable force_cast
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCell
-        cell.recipeLabel.text = category?.recipes[indexPath.row].name
-        cell.recipeImage.image = setImage(url: (category?.recipes[indexPath.row].photo)!)
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell",
+                                                         for: indexPath) as? RecipeCell {
+            cell.recipeLabel.text = category?.recipes[indexPath.row].name
+            cell.recipeImage.image = setImage(url: (category?.recipes[indexPath.row].photo)!)
+            return cell
+        }
 
-        return cell
-        // swiftlint:enable force_cast
-
+        return RecipeCell()
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("INDEX PATH PRESSED AT \(indexPath)IN COLLECTION\n\n")
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.presentData(recipe: (self.category?.recipes[indexPath.row])!)
     }
 
     func setImage(url: String) -> UIImage {
-        var data: Data
-        // swiftlint:disable force_try
+        var data = Data()
 
         let imgURL = URL(string: url)
-        data = try! Data(contentsOf: imgURL!)
+        do {
+            try data = Data(contentsOf: imgURL!)
+        } catch {
+            print("Cannot load image")
+        }
         let image = UIImage(data: data)
         return image!
     }

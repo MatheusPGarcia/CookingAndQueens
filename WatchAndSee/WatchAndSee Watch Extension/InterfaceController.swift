@@ -47,7 +47,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             DispatchQueue.main.async {
                 let parser = ParseWatch()
                 self.steps = parser.decodeInWatch(applicationContext)
-//                print("Oh mamma mia, I like to use breakpoints, but xuh no, he prefers prints:\n\(self.steps)")
 
                 var context: [String] = []
                 var controllers: [String] = []
@@ -68,8 +67,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                         controllers.append(control)
                     }
                 }
-
-//                let controllers = [String](repeating: "StepInterfaceController", count: self.steps.count)
                 self.presentController(withNames: controllers, contexts: context)
             }
         }
