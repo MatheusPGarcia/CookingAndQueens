@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RecipeDelegate {
+protocol RecipeDelegate: class {
     func presentData(recipe: Recipes)
 }
 
@@ -17,7 +17,7 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
 
     var category: Category?
-    var delegate: RecipeDelegate?
+    weak var delegate: RecipeDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

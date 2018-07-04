@@ -25,12 +25,10 @@ class ParseManager: NSObject {
         steps = []
 
         guard let ingDictionary = ing as? [String: Any] else {
-            print("deu merda")
             return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 
         guard let stpDictionary = stp as? [String: Any] else {
-            print("deu merda")
             return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
         }
 

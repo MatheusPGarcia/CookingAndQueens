@@ -8,13 +8,9 @@
 
 import UIKit
 
-class ObjectsManager: UIViewController {
+class ObjectsManager: NSObject {
     var recipeList = [Recipes]()
     var categoryList = [Category]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
     // creates recipes in each corresponding category
     func createCategories(_ recipes: [Recipes], _ categories: [Category]) -> [Category] {
