@@ -26,6 +26,7 @@
 		42D609B720E3EB6A00349CB4 /* OleoScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D609B620E3EB6800349CB4 /* OleoScript-Bold.ttf */; };
 		42D609B920E3EBF700349CB4 /* OleoScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D609B820E3EBF600349CB4 /* OleoScript-Regular.ttf */; };
 		42D609BB20E3F9AF00349CB4 /* RecipeDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609BA20E3F9AF00349CB4 /* RecipeDetailsCell.swift */; };
+		42F80E9620ED31C5005E04EC /* WatchAndSeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F80E9520ED31C5005E04EC /* WatchAndSeeTests.swift */; };
 		AE18F40020E527B6007DC404 /* WatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE18F3FF20E527B6007DC404 /* WatchController.swift */; };
 		AE1C083B20DACBAC00B0BB14 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083920DACBAC00B0BB14 /* Interface.storyboard */; };
 		AE1C083D20DACBAD00B0BB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C083C20DACBAD00B0BB14 /* Assets.xcassets */; };
@@ -49,10 +50,18 @@
 		AEFE4E5820E17ECE00D5688E /* ParseWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */; };
 		AEFE4E5920E1856800D5688E /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
 		AEFE4E5A20E1856D00D5688E /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
+		C4265593F51FE52F6B9C32D2 /* Pods_WatchAndSeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E577E2C1324ECACF7AC0764 /* Pods_WatchAndSeeTests.framework */; };
 		F2772CF693FC58EC9D46F939 /* Pods_WatchAndSee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		42F80E9820ED31C5005E04EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE4F7ED620D9869E0050C176 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE4F7EDD20D9869E0050C176;
+			remoteInfo = WatchAndSee;
+		};
 		AE1C084520DACBAD00B0BB14 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AE4F7ED620D9869E0050C176 /* Project object */;
@@ -111,7 +120,11 @@
 		42D609B620E3EB6800349CB4 /* OleoScript-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OleoScript-Bold.ttf"; sourceTree = "<group>"; };
 		42D609B820E3EBF600349CB4 /* OleoScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OleoScript-Regular.ttf"; sourceTree = "<group>"; };
 		42D609BA20E3F9AF00349CB4 /* RecipeDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsCell.swift; sourceTree = "<group>"; };
+		42F80E9320ED31C5005E04EC /* WatchAndSeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchAndSeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42F80E9520ED31C5005E04EC /* WatchAndSeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAndSeeTests.swift; sourceTree = "<group>"; };
+		42F80E9720ED31C5005E04EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55B9C0E03C3DACE156B916A8 /* Pods-WatchAndSee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.release.xcconfig"; sourceTree = "<group>"; };
+		9E577E2C1324ECACF7AC0764 /* Pods_WatchAndSeeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchAndSeeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE18F3FF20E527B6007DC404 /* WatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchController.swift; sourceTree = "<group>"; };
 		AE1C083720DACBAC00B0BB14 /* WatchAndSee Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchAndSee Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1C083A20DACBAC00B0BB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -137,10 +150,27 @@
 		AEBEC2CA20E693D10038EE62 /* TimerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInterfaceController.swift; sourceTree = "<group>"; };
 		AEBEC2CC20E6B00A0038EE62 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWatch.swift; sourceTree = "<group>"; };
+		B30B3794409A979616B7597B /* Pods-WatchAndSeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSeeTests/Pods-WatchAndSeeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C48E515B42E128347C9FC879 /* Pods-WatchAndSee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee.debug.xcconfig"; sourceTree = "<group>"; };
+		C76014920833BCAF15CFB84F /* Pods-WatchAndSeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchAndSeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchAndSeeTests/Pods-WatchAndSeeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		19DA50E3603F2E6FCD810FCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F80E9020ED31C5005E04EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4265593F51FE52F6B9C32D2 /* Pods_WatchAndSeeTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AE1C084020DACBAD00B0BB14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,10 +250,20 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		42F80E9420ED31C5005E04EC /* WatchAndSeeTests */ = {
+			isa = PBXGroup;
+			children = (
+				42F80E9520ED31C5005E04EC /* WatchAndSeeTests.swift */,
+				42F80E9720ED31C5005E04EC /* Info.plist */,
+			);
+			path = WatchAndSeeTests;
+			sourceTree = "<group>";
+		};
 		512218BC4A0570B0B03171AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */,
+				9E577E2C1324ECACF7AC0764 /* Pods_WatchAndSeeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -233,6 +273,8 @@
 			children = (
 				C48E515B42E128347C9FC879 /* Pods-WatchAndSee.debug.xcconfig */,
 				55B9C0E03C3DACE156B916A8 /* Pods-WatchAndSee.release.xcconfig */,
+				B30B3794409A979616B7597B /* Pods-WatchAndSeeTests.debug.xcconfig */,
+				C76014920833BCAF15CFB84F /* Pods-WatchAndSeeTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -268,6 +310,7 @@
 				AE4F7EE020D9869E0050C176 /* WatchAndSee */,
 				AE1C083820DACBAC00B0BB14 /* WatchAndSee Watch */,
 				AE1C084720DACBAD00B0BB14 /* WatchAndSee Watch Extension */,
+				42F80E9420ED31C5005E04EC /* WatchAndSeeTests */,
 				AE4F7EDF20D9869E0050C176 /* Products */,
 				6A9107CBCED49621C39D8B04 /* Pods */,
 				512218BC4A0570B0B03171AC /* Frameworks */,
@@ -280,6 +323,7 @@
 				AE4F7EDE20D9869E0050C176 /* WatchAndSee.app */,
 				AE1C083720DACBAC00B0BB14 /* WatchAndSee Watch.app */,
 				AE1C084320DACBAD00B0BB14 /* WatchAndSee Watch Extension.appex */,
+				42F80E9320ED31C5005E04EC /* WatchAndSeeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,12 +351,33 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		42F80E9220ED31C5005E04EC /* WatchAndSeeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42F80E9C20ED31C5005E04EC /* Build configuration list for PBXNativeTarget "WatchAndSeeTests" */;
+			buildPhases = (
+				EE4A21A03284D2B04FDBCE48 /* [CP] Check Pods Manifest.lock */,
+				42F80E8F20ED31C5005E04EC /* Sources */,
+				42F80E9020ED31C5005E04EC /* Frameworks */,
+				42F80E9120ED31C5005E04EC /* Resources */,
+				FF12CFBFCE2CB224FED9E572 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42F80E9920ED31C5005E04EC /* PBXTargetDependency */,
+			);
+			name = WatchAndSeeTests;
+			productName = WatchAndSeeTests;
+			productReference = 42F80E9320ED31C5005E04EC /* WatchAndSeeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AE1C083620DACBAC00B0BB14 /* WatchAndSee Watch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE1C085920DACBAE00B0BB14 /* Build configuration list for PBXNativeTarget "WatchAndSee Watch" */;
 			buildPhases = (
 				AE1C083520DACBAC00B0BB14 /* Resources */,
 				AE1C085820DACBAE00B0BB14 /* Embed App Extensions */,
+				19DA50E3603F2E6FCD810FCB /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -373,6 +438,10 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Matheus Garcia";
 				TargetAttributes = {
+					42F80E9220ED31C5005E04EC = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = AE4F7EDD20D9869E0050C176;
+					};
 					AE1C083620DACBAC00B0BB14 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -400,11 +469,19 @@
 				AE4F7EDD20D9869E0050C176 /* WatchAndSee */,
 				AE1C083620DACBAC00B0BB14 /* WatchAndSee Watch */,
 				AE1C084220DACBAD00B0BB14 /* WatchAndSee Watch Extension */,
+				42F80E9220ED31C5005E04EC /* WatchAndSeeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		42F80E9120ED31C5005E04EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AE1C083520DACBAC00B0BB14 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,9 +574,57 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchAndSee/Pods-WatchAndSee-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EE4A21A03284D2B04FDBCE48 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WatchAndSeeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF12CFBFCE2CB224FED9E572 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WatchAndSeeTests/Pods-WatchAndSeeTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchAndSeeTests/Pods-WatchAndSeeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		42F80E8F20ED31C5005E04EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F80E9620ED31C5005E04EC /* WatchAndSeeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AE1C083F20DACBAD00B0BB14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -542,6 +667,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		42F80E9920ED31C5005E04EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE4F7EDD20D9869E0050C176 /* WatchAndSee */;
+			targetProxy = 42F80E9820ED31C5005E04EC /* PBXContainerItemProxy */;
+		};
 		AE1C084620DACBAD00B0BB14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AE1C084220DACBAD00B0BB14 /* WatchAndSee Watch Extension */;
@@ -582,6 +712,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		42F80E9A20ED31C5005E04EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B30B3794409A979616B7597B /* Pods-WatchAndSeeTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				INFOPLIST_FILE = WatchAndSeeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ganaha.WatchAndSeeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchAndSee.app/WatchAndSee";
+			};
+			name = Debug;
+		};
+		42F80E9B20ED31C5005E04EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C76014920833BCAF15CFB84F /* Pods-WatchAndSeeTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				INFOPLIST_FILE = WatchAndSeeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ganaha.WatchAndSeeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchAndSee.app/WatchAndSee";
+			};
+			name = Release;
+		};
 		AE1C085620DACBAE00B0BB14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -825,6 +997,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		42F80E9C20ED31C5005E04EC /* Build configuration list for PBXNativeTarget "WatchAndSeeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42F80E9A20ED31C5005E04EC /* Debug */,
+				42F80E9B20ED31C5005E04EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AE1C085520DACBAE00B0BB14 /* Build configuration list for PBXNativeTarget "WatchAndSee Watch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

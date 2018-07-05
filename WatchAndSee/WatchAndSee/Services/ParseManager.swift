@@ -13,13 +13,22 @@ class ParseManager: NSObject {
     var steps = [Step]()
     var recipe: Recipes?
 
+    func parseCategory(_ snapshotDic: [String: Any]) -> Category {
+        
+        return Category()
+    }
+
+    func parseRecipes(_ snapshotDic: [String: Any]) -> [Recipes] {
+        return [Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])]
+    }
+
     func parseRecipe(_ snapshotDic: [String: Any]) -> Recipes {
-        let name = snapshotDic["nome"] as? String
-        let time = snapshotDic["tempo"] as? String
-        let rendiment = snapshotDic["rendimento"] as? String
+        let name = snapshotDic["Nome"] as? String
+        let time = snapshotDic["Tempo de preparo"] as? String
+        let rendiment = snapshotDic["Rendimento"] as? String
         let ing = snapshotDic["Ingredientes"]!
         let stp = snapshotDic["Passos"]
-        let photo = snapshotDic["foto"] as? String
+        let photo = snapshotDic["Foto"] as? String
 
         ingredients = []
         steps = []
@@ -63,4 +72,5 @@ class ParseManager: NSObject {
                        photo: photo!,
                        steps: steps)
     }
+
 }
