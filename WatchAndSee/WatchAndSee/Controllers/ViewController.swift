@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     var objManager = ObjectsManager()
 
     var highlightRecipe: Recipes!
-    var recipes = [Recipes]()
     var categories = [Category]()
     var rec: Recipes?
 
@@ -32,11 +31,6 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        setupCategories(name: "Para impressionar as visitas",
-                        elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
-        setupCategories(name: "Almoço requintado",
-                        elements: ["Sanduíche de Carne de Panela na Travessa", "Berinjela à parmegiana", "Rabada"])
-
         databaseManager = DatabaseService.shared
 
         self.view.isUserInteractionEnabled = false
@@ -44,18 +38,17 @@ class ViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
 
         if InternetConnection.checkCconnection() {
-            databaseManager.createRecipeObject(completion: { receivedRecipe in
+            databaseManager.createRecipeObject(completion: { receivedCategories in
 
                 //finished retrieving data from database
-                if receivedRecipe != nil {
-                    self.recipes = receivedRecipe!
+                if receivedCategories != nil {
+                    self.categories = receivedCategories!
                     self.view.isUserInteractionEnabled = true
                     self.activityIndicator.stopAnimating()
                     self.loadingView.isHidden = true
                     self.loadingLabel.isHidden = true
-                    self.categories = self.objManager.createCategories(self.recipes, self.categories)
                     self.tableView.reloadData()
-                    self.setupHighlightRecipe()
+                    //self.setupHighlightRecipe()
                 }
             })
         } else {
@@ -71,26 +64,16 @@ class ViewController: UIViewController {
     }
 
     func setupHighlightRecipe() {
-
-        let search = "Torta de Frango"
-        let result = recipes.filter({ (rec) -> Bool in
-            rec.name.lowercased().contains(search.lowercased())
-        })
-        highlightImage.layer.cornerRadius = 5
-        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        highlightImage.image = setImage(url: result[0].photo)
-        hightlightLabel.text = result[0].name
-        highlightRecipe = result[0]
-    }
-
-    func setImage(url: String) -> UIImage {
-        var data: Data
-        // swiftlint:disable force_try
-
-        let imgURL = URL(string: url)
-        data = try! Data(contentsOf: imgURL!)
-        let image = UIImage(data: data)
-        return image!
+//
+//        let search = "Torta de Frango"
+//        let result = recipes.filter({ (rec) -> Bool in
+//            rec.name.lowercased().contains(search.lowercased())
+//        })
+//        highlightImage.layer.cornerRadius = 5
+//        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//        highlightImage.image = setImage(url: result[0].photo)
+//        hightlightLabel.text = result[0].name
+//        highlightRecipe = result[0]
     }
 
     func setupCategories(name: String, elements: [String]) {

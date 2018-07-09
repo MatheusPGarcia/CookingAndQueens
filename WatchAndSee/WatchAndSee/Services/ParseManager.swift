@@ -13,9 +13,41 @@ class ParseManager: NSObject {
     var steps = [Step]()
     var recipe: Recipes?
 
+//    func parseData<T>(dump: T.Type, dataDic: [String: Any]) -> T {
+//        if dump == Category.self {
+//            let categoryItem = parseCategory(dataDic)
+//            return categoryItem as! T
+//        }
+//        else if dump == Recipes.self {
+//            return parseRecipe(dataDic) as! T
+//        }
+//        else {
+//            print("No compatible type")
+//            return T
+//        }
+//
+//    }
+
     func parseCategory(_ snapshotDic: [String: Any]) -> Category {
-        
-        return Category()
+        var categoryItem = Category()
+        var catElements = [String]()
+
+        let name = snapshotDic["Nome"] as? String
+        let elements = snapshotDic["Itens"]
+
+        guard let elemDic = elements as? [String: Any] else {
+            return Category()
+        }
+        // swiftlint:disable force_cast
+
+        for element in elemDic {
+            catElements.append(element.value as! String)
+        }
+
+        categoryItem.name = name!
+        categoryItem.elements = catElements
+
+        return categoryItem
     }
 
     func parseRecipes(_ snapshotDic: [String: Any]) -> [Recipes] {

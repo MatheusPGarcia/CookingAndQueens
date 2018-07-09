@@ -17,6 +17,7 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
 
     var category: Category?
+    var objManager = ObjectsManager()
     weak var delegate: RecipeDelegate?
 
     override func awakeFromNib() {
@@ -43,7 +44,7 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell",
                                                          for: indexPath) as? RecipeCell {
             cell.recipeLabel.text = category?.recipes[indexPath.row].name
-            cell.recipeImage.image = setImage(url: (category?.recipes[indexPath.row].photo)!)
+            cell.recipeImage.image = objManager.setImage(url: (category?.recipes[indexPath.row].photo)!)
             return cell
         }
 
@@ -56,19 +57,6 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.presentData(recipe: (self.category?.recipes[indexPath.row])!)
-    }
-
-    func setImage(url: String) -> UIImage {
-        var data = Data()
-
-        let imgURL = URL(string: url)
-        do {
-            try data = Data(contentsOf: imgURL!)
-        } catch {
-            print("Cannot load image")
-        }
-        let image = UIImage(data: data)
-        return image!
     }
 }
 

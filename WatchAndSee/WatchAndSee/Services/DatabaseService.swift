@@ -19,6 +19,7 @@ class DatabaseService: NSObject {
 
     static var shared = DatabaseService()
     let parseRef = ParseManager()
+    var objManager = ObjectsManager()
     var ref: DatabaseReference!
 
     var categories = [Category]()
@@ -49,33 +50,49 @@ class DatabaseService: NSObject {
 //        }
 //
 //    }
-    func createRecipeObject(completion: @escaping (_ response: [Recipes]?) -> Void) {
-        var ingredients = [Recipes]()
+    func createRecipeObject(completion: @escaping (_ response: [Category]?) -> Void) {
+        var recipes = [Recipes]()
 
         ref.observeSingleEvent(of: .value) { snapshot in
-            let childSnapshot = snapshot.childSnapshot(forPath: "Categorias")
+
+//            let categoryJSON = self.retrieveData(dump: Category.self, snapshot: snapshot, path: "Categorias")
+
+            var childSnapshot = snapshot.childSnapshot(forPath: "Categorias")
             for child in childSnapshot.children {
 
                 if let childSnapshot = child as? DataSnapshot,
                     let categoryJSON = childSnapshot.value as? [String: Any] {
                     let category = self.parseRef.parseCategory(categoryJSON)
+                    self.categories.append(category)
                 }
             }
 
+            childSnapshot = snapshot.childSnapshot(forPath: "Recipes")
+            for child in childSnapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                    let recipeJSON = childSnapshot.value as? [String: Any] {
+                    let recipe = self.parseRef.parseRecipe(recipeJSON)
+                    recipes.append(recipe)
+                }
+            }
 
-//            if let childSnapshot = snapshot.children.allObjects[DatabaseKeys.categories.rawValue] as? DataSnapshot,
-//                let categoryChild = childSnapshot.children.allObjects as? [Any], let categoryJSON = categoryChild.value as? [String: Any] {
-//
-//                self.categories = self.parseRef.parseCategories(categoryJSON)
-//            }
-//
-//            if let childSnapshot = snapshot.children.allObjects[DatabaseKeys.recipes.rawValue] as? DataSnapshot,
-//                let recipesJSON = childSnapshot.value as? [String: Any] {
-//                ingredients = self.parseRef.parseRecipes(recipesJSON)
-//            }
-//            // guarantees it returns a value when it finishes retriving all data
-            completion(ingredients)
+            self.categories = self.objManager.createCategories(recipes, self.categories)
+
+            completion(self.categories)
         }
 
     }
+//
+//    func retrieveData<T>(dump: T.Type, snapshot: DataSnapshot, path: String) -> [T] {
+//        var data = [T]()
+//        var childSnapshot = snapshot.childSnapshot(forPath: path)
+//
+//        for child in childSnapshot.children {
+//            if let typeJSON = childSnapshot.value as? [String: Any] {
+//                let data = self.parseRef.parseData(dump: dump, dataDic: typeJSON)
+//                self.categories.append(data)
+//            }
+//        }
+//        return data
+//    }
 }

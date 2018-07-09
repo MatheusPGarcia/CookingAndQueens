@@ -19,6 +19,7 @@ class RecipesDetailsViewController: UIViewController {
     @IBOutlet weak var portionsLabel: UILabel!
     @IBOutlet weak var startRecipeButton: UIButton!
 
+    var objManager = ObjectsManager()
     var recipe: Recipes?
     var sections = ["Ingredientes", "Modo de preparo"]
     var items = [[String]]()
@@ -41,7 +42,7 @@ class RecipesDetailsViewController: UIViewController {
 
         startRecipeButton.layer.cornerRadius = 5
 
-        recipeImage.image = setImage(url: (recipe?.photo)!)
+        recipeImage.image = objManager.setImage(url: (recipe?.photo)!)
         recipeNameLabel.text = (recipe?.name)!
 
         items.append((recipe?.ingredients)!)
@@ -59,16 +60,6 @@ class RecipesDetailsViewController: UIViewController {
         }
     }
 
-    func setImage(url: String) -> UIImage {
-        var data: Data
-        // swiftlint:disable force_try
-
-        let imgURL = URL(string: url)
-        data = try! Data(contentsOf: imgURL!)
-        let image = UIImage(data: data)
-        return image!
-    }
-
     @IBAction func startRecipeButtonPressed(_ sender: Any) {
 
         let watchController = WatchController()
@@ -76,34 +67,24 @@ class RecipesDetailsViewController: UIViewController {
         if let recipe = recipe {
 
             if watchController.prepareToSendValue(recipe: recipe) {
-
-                let alertController = UIAlertController(title: "Sucesso",
-                                                        message: "Verifique seu Apple Watch",
-                                                        preferredStyle: .alert)
-
-                let actionOk = UIAlertAction(title: "OK",
-                                            style: .default,
-                                            handler: nil)
-
-                alertController.addAction(actionOk)
-
-                self.present(alertController, animated: true, completion: nil)
-
+                self.alertManager(title: "Sucesso", message: "Verifique seu Apple Watch", status: "OK")
             } else {
-
-                let alertController = UIAlertController(title: "Erro",
-                                                        message: "",
-                                                        preferredStyle: .alert)
-
-                let actionOk = UIAlertAction(title: "OK",
-                                             style: .default,
-                                             handler: nil)
-
-                alertController.addAction(actionOk)
-
-                self.present(alertController, animated: true, completion: nil)
+                  self.alertManager(title: "Erro", message: "Nenhum Apple Watch pareado", status: "OK")
             }
         }
+    }
+    func alertManager(title: String, message: String, status: String) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+
+        let actionOk = UIAlertAction(title: status,
+                                     style: .default,
+                                     handler: nil)
+
+        alertController.addAction(actionOk)
+
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

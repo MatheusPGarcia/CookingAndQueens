@@ -42,4 +42,17 @@ class ObjectsManager: NSObject {
         }
         return recipeList
     }
+
+    func setImage(url: String) -> UIImage {
+        var data = Data()
+
+        let imgURL = URL(string: url)
+        do {
+            try data = Data(contentsOf: imgURL!)
+        } catch {
+            print("Cannot load image")
+        }
+        let image = UIImage(data: data)
+        return image!
+    }
 }
