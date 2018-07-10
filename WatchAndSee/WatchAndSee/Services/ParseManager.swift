@@ -32,8 +32,15 @@ class ParseManager: NSObject {
         var categoryItem = Category()
         var catElements = [String]()
 
-        let name = snapshotDic["Nome"] as? String
-        let elements = snapshotDic["Itens"]
+        guard let name = snapshotDic["Nome"] as? String else {
+            print("No existing name")
+            return Category()
+        }
+
+        guard let elements = snapshotDic["Itens"] else {
+            print("No existing itens")
+            return Category()
+        }
 
         guard let elemDic = elements as? [String: Any] else {
             return Category()
@@ -44,7 +51,7 @@ class ParseManager: NSObject {
             catElements.append(element.value as! String)
         }
 
-        categoryItem.name = name!
+        categoryItem.name = name
         categoryItem.elements = catElements
 
         return categoryItem
@@ -55,8 +62,16 @@ class ParseManager: NSObject {
     }
 
     func parseRecipe(_ snapshotDic: [String: Any]) -> Recipes {
-        let name = snapshotDic["Nome"] as? String
-        let time = snapshotDic["Tempo de preparo"] as? String
+
+        guard let name = snapshotDic["Nome"] as? String else {
+            print("No existing name")
+            return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
+        }
+
+        guard let time = snapshotDic["Tempo de preparo"] as? String else {
+            print("No existing prepare time")
+            return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
+        }
         let rendiment = snapshotDic["Rendimento"] as? String
         let ing = snapshotDic["Ingredientes"]!
         let stp = snapshotDic["Passos"]
@@ -97,9 +112,9 @@ class ParseManager: NSObject {
             }
         }
 
-        return Recipes(name: name!,
+        return Recipes(name: name,
                        ingredients: ingredients,
-                       time: time!,
+                       time: time,
                        rendiment: rendiment!,
                        photo: photo!,
                        steps: steps)

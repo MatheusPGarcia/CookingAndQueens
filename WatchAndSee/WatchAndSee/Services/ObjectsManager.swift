@@ -9,6 +9,8 @@
 import UIKit
 
 class ObjectsManager: NSObject {
+    static var shared = ObjectsManager()
+
     var recipeList = [Recipes]()
     var categoryList = [Category]()
 

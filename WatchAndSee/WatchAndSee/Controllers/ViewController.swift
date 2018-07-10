@@ -48,7 +48,7 @@ class ViewController: UIViewController {
                     self.loadingView.isHidden = true
                     self.loadingLabel.isHidden = true
                     self.tableView.reloadData()
-                    //self.setupHighlightRecipe()
+                    self.setupHighlightRecipe()
                 }
             })
         } else {
@@ -64,16 +64,12 @@ class ViewController: UIViewController {
     }
 
     func setupHighlightRecipe() {
-//
-//        let search = "Torta de Frango"
-//        let result = recipes.filter({ (rec) -> Bool in
-//            rec.name.lowercased().contains(search.lowercased())
-//        })
-//        highlightImage.layer.cornerRadius = 5
-//        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//        highlightImage.image = setImage(url: result[0].photo)
-//        hightlightLabel.text = result[0].name
-//        highlightRecipe = result[0]
+        self.highlightRecipe = self.categories[self.categories.count-1].recipes[0]
+        highlightImage.image = ObjectsManager.shared.setImage(url: highlightRecipe.photo)
+        hightlightLabel.text = highlightRecipe.name
+
+        highlightImage.layer.cornerRadius = 5
+        highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
     func setupCategories(name: String, elements: [String]) {
@@ -95,19 +91,20 @@ class ViewController: UIViewController {
     }
 }
 
-// swiftlint:disable force_cast
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryCell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as? CategoryCell {
 
-        cell.setup(category: self.categories[indexPath.section])
-        cell.delegate = self
+            cell.setup(category: self.categories[indexPath.section])
+            cell.delegate = self
 
-        return cell
+            return cell
+        }
+        return CategoryCell()
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -127,7 +124,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return categories.count
+        return categories.count - 1
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

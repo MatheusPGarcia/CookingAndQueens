@@ -42,7 +42,7 @@ class RecipesDetailsViewController: UIViewController {
 
         startRecipeButton.layer.cornerRadius = 5
 
-        recipeImage.image = objManager.setImage(url: (recipe?.photo)!)
+        recipeImage.image = ObjectsManager.shared.setImage(url: (recipe?.photo)!)
         recipeNameLabel.text = (recipe?.name)!
 
         items.append((recipe?.ingredients)!)

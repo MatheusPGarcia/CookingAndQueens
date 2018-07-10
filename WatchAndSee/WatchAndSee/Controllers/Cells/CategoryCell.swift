@@ -44,7 +44,7 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell",
                                                          for: indexPath) as? RecipeCell {
             cell.recipeLabel.text = category?.recipes[indexPath.row].name
-            cell.recipeImage.image = objManager.setImage(url: (category?.recipes[indexPath.row].photo)!)
+            cell.recipeImage.image = ObjectsManager.shared.setImage(url: (category?.recipes[indexPath.row].photo)!)
             return cell
         }
 
