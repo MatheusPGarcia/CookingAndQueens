@@ -12,6 +12,11 @@ class CategoryParser: NSObject, PersistenceObject {
     typealias InternalType = Category
     static var shared = CategoryParser()
 
+
+    /// Responsible for parsing data from a dictionary from a specific session from database
+    ///
+    /// - Parameter dataDic: dictionary containing database info
+    /// - Returns: Category object with database info
     func parseData(dataDic: [String: Any]) -> Category {
         var categoryItem = Category()
         var catElements = [String]()

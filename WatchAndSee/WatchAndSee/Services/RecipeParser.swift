@@ -16,6 +16,11 @@ class RecipeParser: NSObject, PersistenceObject {
     var steps = [Step]()
     var recipe: Recipes?
 
+
+    /// Responsible for parsing data from a dictionary from a specific session from database
+    ///
+    /// - Parameter dataDic: dictionary containing database info
+    /// - Returns: Recipe object with database info
     func parseData(dataDic: [String: Any]) -> Recipes {
          if let name = dataDic["Nome"] as? String,
             let time = dataDic["Tempo de preparo"] as? String,

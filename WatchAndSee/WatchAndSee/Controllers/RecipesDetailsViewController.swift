@@ -54,6 +54,7 @@ class RecipesDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // Gets only the text from Step array
     func setupSteps() {
         for element in (recipe?.steps)! {
             self.steps.append(element.text)
@@ -61,18 +62,24 @@ class RecipesDetailsViewController: UIViewController {
     }
 
     @IBAction func startRecipeButtonPressed(_ sender: Any) {
-
         let watchController = WatchController()
 
         if let recipe = recipe {
-
             if watchController.prepareToSendValue(recipe: recipe) {
                 self.alertManager(title: "Sucesso", message: "Verifique seu Apple Watch", status: "OK")
             } else {
-                  self.alertManager(title: "Erro", message: "Nenhum Apple Watch pareado", status: "OK")
+                self.alertManager(title: "Erro", message: "Nenhum Apple Watch pareado", status: "OK")
             }
         }
     }
+
+
+    /// Sends alert indication wheter the Apple Watch is connected or not
+    ///
+    /// - Parameters:
+    ///   - title: Title that will be displayed in the alert
+    ///   - message: Message that will be displayed in the body of the alert
+    ///   - status: status of alert
     func alertManager(title: String, message: String, status: String) {
         let alertController = UIAlertController(title: title,
                                                 message: message,

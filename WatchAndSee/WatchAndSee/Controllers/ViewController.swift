@@ -79,6 +79,9 @@ class ViewController: UIViewController {
         highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
+
+    /// Perform segue to RecipeDetails
+    /// - Parameter recipe: recipe to be displayed
     func goToDetails(recipe: Recipes) {
         self.rec = recipe
         performSegue(withIdentifier: "recipeDetails", sender: nil)

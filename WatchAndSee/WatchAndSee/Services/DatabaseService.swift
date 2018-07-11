@@ -12,6 +12,7 @@ import Firebase
 class DatabaseService: NSObject {
 
     static var shared = DatabaseService()
+
     var objManager = ObjectsManager()
     var ref: DatabaseReference!
     var recipeRef: Recipes?
@@ -28,10 +29,7 @@ class DatabaseService: NSObject {
     /// Responsible for estabilishing connection with Firebase and for data retrieving.
     /// - Parameter completion: indicates to ViewController the data retrieving is over
     /// - Return: array of categories that will compose the main screen
-
     func createRecipeObject(completion: @escaping (_ response: [Category]?) -> Void) {
-        var recipes = [Recipes]()
-
         ref.observeSingleEvent(of: .value) { snapshot in
 
             let categoriesBase = self.retrieveData(object: CategoryParser(), snapshot: snapshot, path: "Categorias")
@@ -43,6 +41,13 @@ class DatabaseService: NSObject {
 
     }
 
+    /// Responsible for calling the parser for each section in database
+    ///
+    /// - Parameters:
+    ///   - object: type of data that will be returned
+    ///   - snapshot: snapshot from database
+    ///   - path: section from database that will be retrieved
+    /// - Returns: array from specified data
     func retrieveData<T: PersistenceObject>(object: T, snapshot: DataSnapshot, path: String) -> [T.InternalType] {
         var dataArray = [T.InternalType]()
 

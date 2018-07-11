@@ -33,6 +33,8 @@ class CategoryCell: UITableViewCell {
     }
 }
 
+
+// MARK: - UICollectionView setup
 extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -47,7 +49,6 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
             cell.recipeImage.image = ObjectsManager.shared.setImage(url: (category?.recipes[indexPath.row].photo)!)
             return cell
         }
-
         return RecipeCell()
     }
 
@@ -60,6 +61,8 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 }
 
+
+// MARK: - UICocllectionView Layout is set
 extension CategoryCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

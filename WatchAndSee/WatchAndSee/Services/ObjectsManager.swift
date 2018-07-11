@@ -33,8 +33,6 @@ class ObjectsManager: NSObject {
         return categoryList
     }
 
-    // filters all recipes to return the right recipes to each category
-
     /// Filters all recipes to return the right one to each category
     ///
     /// - Parameters:
