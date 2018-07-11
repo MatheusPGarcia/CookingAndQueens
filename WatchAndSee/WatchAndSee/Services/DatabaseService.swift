@@ -7,18 +7,42 @@
 //
 
 import UIKit
+import CloudKit
 
 //Classe Singleton que será responsável pela movimentação no banco de dados
 class DatabaseService: NSObject {
 
-    static var shared = DatabaseService()
-    let parseRef = ParseManager()
-//    var ref: DatabaseReference!
+    let publicDatabase = CKContainer.default().publicCloudDatabase
 
-    private override init() {
+    override init() {
         super.init()
+    }
 
-//        ref = Database.database().reference()
+    public func fetch (predicateName: String, recordType: String) {
+
+        var record = [CKRecord]()
+
+        let predicate = NSPredicate(format: "name = %@", predicateName)
+
+        let query = CKQuery(recordType: recordType, predicate: predicate)
+        publicDatabase.perform(query, inZoneWith: nil) { (recordReference, error) in
+
+            if let error = error {
+                print("ops, something went wrong while trying to query \(recordType):\n\(error)")
+                return
+            }
+
+            guard let recordList = recordReference else {
+                print("the \(recordType) list is empty")
+                return
+            }
+
+            record = recordList
+
+            print("\nPredicate: \(predicateName)")
+
+            print("was here with the following record:\n\(record)\n")
+        }
     }
 
     //retrieve Data from database

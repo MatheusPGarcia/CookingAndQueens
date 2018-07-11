@@ -1,14 +1,14 @@
 //
-//  Category.swift
+//  Recipe.swift
 //  WatchAndSee
 //
-//  Created by Larissa Ganaha on 26/06/18.
+//  Created by Matheus Garcia on 11/07/18.
 //  Copyright © 2018 Matheus Garcia. All rights reserved.
 //
 
 import Foundation
 
-struct Category {
+struct Recipe {
 
     var name: String
     var recordName: String

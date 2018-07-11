@@ -13,17 +13,7 @@ struct Step {
     var text: String
     var time: Int?
 
-    init() {
-        self.text = ""
-        self.time = nil
-    }
-
     init(text: String, time: Int?) {
-        self.text = text
-        self.time = time
-    }
-
-    mutating func setValues(_ text: String, _ time: Int?) {
 
         self.text = text
 
