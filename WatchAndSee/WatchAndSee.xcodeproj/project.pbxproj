@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4200E12620DBE581001B3F8C /* ParseManager.swift */; };
+		421BDC0E20F63F1000DA82C4 /* CategoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421BDC0D20F63F1000DA82C4 /* CategoryParser.swift */; };
+		421BDC1020F641F000DA82C4 /* RecipeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421BDC0F20F641F000DA82C4 /* RecipeParser.swift */; };
 		423BF91920D98A80002021BA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF91820D98A80002021BA /* DatabaseService.swift */; };
 		423BF91B20D991A0002021BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 423BF91A20D9919F002021BA /* GoogleService-Info.plist */; };
 		423BF92420DA9BE9002021BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
@@ -21,6 +23,8 @@
 		42453C6F20E28B3D00DD0400 /* LouisGeorgeCafe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */; };
 		42453C7020E28B3D00DD0400 /* LouisGeorgeCafe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */; };
 		42501DB220E2A89100F67532 /* RecipesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42501DB120E2A89100F67532 /* RecipesDetailsViewController.swift */; };
+		425B950F20F64E68001A1A0F /* RecipeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421BDC0F20F641F000DA82C4 /* RecipeParser.swift */; };
+		425B951120F64ED4001A1A0F /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4200E12620DBE581001B3F8C /* ParseManager.swift */; };
 		42D609B320E31FF800349CB4 /* ObjectsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609B220E31FF800349CB4 /* ObjectsManager.swift */; };
 		42D609B520E321BC00349CB4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609B420E321BC00349CB4 /* Category.swift */; };
 		42D609B720E3EB6A00349CB4 /* OleoScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D609B620E3EB6800349CB4 /* OleoScript-Bold.ttf */; };
@@ -106,6 +110,8 @@
 /* Begin PBXFileReference section */
 		2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchAndSee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4200E12620DBE581001B3F8C /* ParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
+		421BDC0D20F63F1000DA82C4 /* CategoryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryParser.swift; sourceTree = "<group>"; };
+		421BDC0F20F641F000DA82C4 /* RecipeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeParser.swift; sourceTree = "<group>"; };
 		423BF91820D98A80002021BA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		423BF91A20D9919F002021BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		423BF92320DA9BE9002021BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 				423BF91820D98A80002021BA /* DatabaseService.swift */,
 				4200E12620DBE581001B3F8C /* ParseManager.swift */,
 				42D609B220E31FF800349CB4 /* ObjectsManager.swift */,
+				421BDC0D20F63F1000DA82C4 /* CategoryParser.swift */,
+				421BDC0F20F641F000DA82C4 /* RecipeParser.swift */,
 				AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */,
 			);
 			path = Services;
@@ -630,10 +638,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1C084D20DACBAD00B0BB14 /* NotificationController.swift in Sources */,
+				425B951120F64ED4001A1A0F /* ParseManager.swift in Sources */,
 				AE1C084B20DACBAD00B0BB14 /* ExtensionDelegate.swift in Sources */,
 				AEFE4E5A20E1856D00D5688E /* Step.swift in Sources */,
 				AE4D7F3520E56382001E60BE /* ParseWatch.swift in Sources */,
 				AE1C084920DACBAD00B0BB14 /* InterfaceController.swift in Sources */,
+				425B950F20F64E68001A1A0F /* RecipeParser.swift in Sources */,
 				AE85D4E720E651C20037CBCC /* StepInterfaceController.swift in Sources */,
 				AEFE4E5920E1856800D5688E /* Recipes.swift in Sources */,
 				AEBEC2CB20E693D10038EE62 /* TimerInterfaceController.swift in Sources */,
@@ -644,8 +654,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				421BDC0E20F63F1000DA82C4 /* CategoryParser.swift in Sources */,
 				423BF92420DA9BE9002021BA /* Recipes.swift in Sources */,
 				42D609B320E31FF800349CB4 /* ObjectsManager.swift in Sources */,
+				421BDC1020F641F000DA82C4 /* RecipeParser.swift in Sources */,
 				AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */,
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
 				AEB0091120DD42810089224B /* Step.swift in Sources */,

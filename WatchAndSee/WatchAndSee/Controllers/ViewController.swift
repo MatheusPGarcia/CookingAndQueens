@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             databaseManager.createRecipeObject(completion: { receivedCategories in
 
                 //finished retrieving data from database
-                if receivedCategories != nil {
+                if receivedCategories?.count != 0 {
                     self.categories = receivedCategories!
                     self.view.isUserInteractionEnabled = true
                     self.activityIndicator.stopAnimating()
@@ -49,12 +49,18 @@ class ViewController: UIViewController {
                     self.loadingLabel.isHidden = true
                     self.tableView.reloadData()
                     self.setupHighlightRecipe()
+                } else {
+                    self.activityIndicator.stopAnimating()
+                    self.loadingLabel.text = "Estamos com problemas técnicos. Por favor, tente novamente mais tarde."
+                    self.loadingLabel.textColor = UIColor.red
+                    return
                 }
             })
         } else {
             activityIndicator.stopAnimating()
             self.loadingView.alpha = 0.99
             self.loadingLabel.text = "Sem conexão de Internet"
+            self.loadingLabel.textColor = UIColor.red
         }
 
     }
@@ -63,6 +69,7 @@ class ViewController: UIViewController {
         goToDetails(recipe: highlightRecipe)
     }
 
+    /// Set up highlight category
     func setupHighlightRecipe() {
         self.highlightRecipe = self.categories[self.categories.count-1].recipes[0]
         highlightImage.image = ObjectsManager.shared.setImage(url: highlightRecipe.photo)
@@ -70,13 +77,6 @@ class ViewController: UIViewController {
 
         highlightImage.layer.cornerRadius = 5
         highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    }
-
-    func setupCategories(name: String, elements: [String]) {
-        var category = Category()
-
-        category.setValues(name, elements)
-        categories.append(category)
     }
 
     func goToDetails(recipe: Recipes) {

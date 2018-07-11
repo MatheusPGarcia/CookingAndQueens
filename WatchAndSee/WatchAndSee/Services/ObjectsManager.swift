@@ -14,7 +14,12 @@ class ObjectsManager: NSObject {
     var recipeList = [Recipes]()
     var categoryList = [Category]()
 
-    // creates recipes in each corresponding category
+    /// Allocate recipes in each corresponding category.
+    ///
+    /// - Parameters:
+    ///   - recipes: array of all the recipes in the database
+    ///   - categories: array of category
+    /// - Returns: array of category updated with each category corresponding recipes
     func createCategories(_ recipes: [Recipes], _ categories: [Category]) -> [Category] {
         var auxCat = Category()
 
@@ -29,6 +34,13 @@ class ObjectsManager: NSObject {
     }
 
     // filters all recipes to return the right recipes to each category
+
+    /// Filters all recipes to return the right one to each category
+    ///
+    /// - Parameters:
+    ///   - elements: array of string holding all the recipes within the category
+    ///   - recipes: array of all recipes in the database
+    /// - Returns: array of Recipe
     func getElements(_ elements: [String], _ recipes: [Recipes]) -> [Recipes] {
         var result = [Recipes]()
         recipeList = []
@@ -45,6 +57,10 @@ class ObjectsManager: NSObject {
         return recipeList
     }
 
+    /// Process image to be displayed
+    ///
+    /// - Parameter url: String containing url link
+    /// - Returns: UIImage to be displayed
     func setImage(url: String) -> UIImage {
         var data = Data()
 

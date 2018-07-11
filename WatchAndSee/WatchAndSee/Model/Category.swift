@@ -9,10 +9,11 @@
 import Foundation
 
 struct Category {
+    typealias InternalType = Category
 
     var name: String
-    var elements: [String]
-    var recipes: [Recipes]
+    var elements: [String]  // array of String with recipes names that the category contains
+    var recipes: [Recipes]  // array of recipes with the names held in elements
 
     init() {
         self.name = ""
@@ -24,5 +25,4 @@ struct Category {
         self.name = name
         self.elements = elements
     }
-
 }

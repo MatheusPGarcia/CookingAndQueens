@@ -8,7 +8,9 @@
 
 import Foundation
 
+/// Model that holds Recipes variables
 struct Recipes {
+    typealias InternalType = Recipes
 
     var name: String
     var ingredients: [String]

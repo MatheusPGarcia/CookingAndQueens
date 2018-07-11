@@ -9,18 +9,12 @@
 import UIKit
 import Firebase
 
-enum DatabaseKeys: Int {
-    case categories = 0
-    case recipes = 1
-}
-
-//Classe Singleton que será responsável pela movimentação no banco de dados
 class DatabaseService: NSObject {
 
     static var shared = DatabaseService()
-    let parseRef = ParseManager()
     var objManager = ObjectsManager()
     var ref: DatabaseReference!
+    var recipeRef: Recipes?
 
     var categories = [Category]()
 
@@ -31,49 +25,36 @@ class DatabaseService: NSObject {
         ref = Database.database().reference()
     }
 
+    /// Responsible for estabilishing connection with Firebase and for data retrieving.
+    /// - Parameter completion: indicates to ViewController the data retrieving is over
+    /// - Return: array of categories that will compose the main screen
+
     func createRecipeObject(completion: @escaping (_ response: [Category]?) -> Void) {
         var recipes = [Recipes]()
 
         ref.observeSingleEvent(of: .value) { snapshot in
 
-//            let categoryJSON = self.retrieveData(dump: Category.self, snapshot: snapshot, path: "Categorias")
-
-            var childSnapshot = snapshot.childSnapshot(forPath: "Categorias")
-            for child in childSnapshot.children {
-
-                if let childSnapshot = child as? DataSnapshot,
-                    let categoryJSON = childSnapshot.value as? [String: Any] {
-                    let category = self.parseRef.parseCategory(categoryJSON)
-                    self.categories.append(category)
-                }
-            }
-
-            childSnapshot = snapshot.childSnapshot(forPath: "Recipes")
-            for child in childSnapshot.children {
-                if let childSnapshot = child as? DataSnapshot,
-                    let recipeJSON = childSnapshot.value as? [String: Any] {
-                    let recipe = self.parseRef.parseRecipe(recipeJSON)
-                    recipes.append(recipe)
-                }
-            }
-
-            self.categories = self.objManager.createCategories(recipes, self.categories)
+            let categoriesBase = self.retrieveData(object: CategoryParser(), snapshot: snapshot, path: "Categorias")
+            let recipes = self.retrieveData(object: RecipeParser(), snapshot: snapshot, path: "Recipes")
+            self.categories = self.objManager.createCategories(recipes, categoriesBase)
 
             completion(self.categories)
         }
 
     }
-//
-//    func retrieveData<T>(dump: T.Type, snapshot: DataSnapshot, path: String) -> [T] {
-//        var data = [T]()
-//        var childSnapshot = snapshot.childSnapshot(forPath: path)
-//
-//        for child in childSnapshot.children {
-//            if let typeJSON = childSnapshot.value as? [String: Any] {
-//                let data = self.parseRef.parseData(dump: dump, dataDic: typeJSON)
-//                self.categories.append(data)
-//            }
-//        }
-//        return data
-//    }
+
+    func retrieveData<T: PersistenceObject>(object: T, snapshot: DataSnapshot, path: String) -> [T.InternalType] {
+        var dataArray = [T.InternalType]()
+
+        let childSnapshot = snapshot.childSnapshot(forPath: path)
+
+        for child in childSnapshot.children {
+            if  let childSnapshot = child as? DataSnapshot,
+                let typeJSON = childSnapshot.value as? [String: Any] {
+                let data = object.parseData(dataDic: typeJSON)
+                dataArray.append(data)
+            }
+        }
+        return dataArray
+    }
 }
