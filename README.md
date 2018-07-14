@@ -14,12 +14,12 @@ Bring your cooking skills to a whole new level with Chef Yourself!
 
 * **Larissa Ganaha**
     * GitHub: larissaganaha
-	* Apple Id:larissaganaha@icloud.com
+	* Apple Id: larissaganaha@icloud.com
     * Email: larissaganaha@gmail.com
 * **Matheus Garcia**
-    * GitHub: 
-	* Apple Id: 
-    * Email: 
+    * GitHub: MatheusPGarcia
+	* Apple Id: matheuspgarcia@icloud.com
+    * Email: matheuspgarcia@gmail.com
 * **Fiipe Marques**
     * GitHub: 
 	* Apple Id: 
