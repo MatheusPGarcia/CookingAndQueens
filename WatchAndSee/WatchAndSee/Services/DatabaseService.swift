@@ -18,13 +18,22 @@ class DatabaseService: NSObject {
         super.init()
     }
 
-    public func fetch (predicateName: String, recordType: String) {
+    public func fetch (recordType: String,
+                       predicate: String?,
+                       reference: CKReference?,
+                       completion: @escaping ([CKRecord]) -> Void) {
 
-        var record = [CKRecord]()
+        var predicateValue: NSPredicate
 
-        let predicate = NSPredicate(format: "name = %@", predicateName)
+        // Generate the predicate for Query.
+        if let predicate = predicate, let reference = reference {
+            predicateValue = NSPredicate(format: "\(predicate) = %@", reference)
+        } else {
+            predicateValue = NSPredicate(value: true)
+        }
 
-        let query = CKQuery(recordType: recordType, predicate: predicate)
+        // Perform the request
+        let query = CKQuery(recordType: recordType, predicate: predicateValue)
         publicDatabase.perform(query, inZoneWith: nil) { (recordReference, error) in
 
             if let error = error {
@@ -32,21 +41,12 @@ class DatabaseService: NSObject {
                 return
             }
 
-            guard let recordList = recordReference else {
+            guard let record = recordReference else {
                 print("the \(recordType) list is empty")
                 return
             }
 
-            record = recordList
-
-            print("\nPredicate: \(predicateName)")
-
-            print("was here with the following record:\n\(record)\n")
+            completion(record)
         }
-    }
-
-    //retrieve Data from database
-    func createRecipeObject(completion: @escaping (_ response: [Recipes]?) -> Void) {
-
     }
 }

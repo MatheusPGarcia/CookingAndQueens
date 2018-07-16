@@ -7,60 +7,117 @@
 //
 
 import UIKit
+import CloudKit
 
 class ParseManager: NSObject {
-    var ingredients = [String]()
-    var steps = [Step]()
-    var recipe: Recipes?
 
-    func parseRecipe(_ snapshotDic: [String: Any]) -> Recipes {
-        let name = snapshotDic["nome"] as? String
-        let time = snapshotDic["tempo"] as? String
-        let rendiment = snapshotDic["rendimento"] as? String
-        let ing = snapshotDic["Ingredientes"]!
-        let stp = snapshotDic["Passos"]
-        let photo = snapshotDic["foto"] as? String
+    let databaseManager = DatabaseService()
 
-        ingredients = []
-        steps = []
+    func parseCategories(completion: @escaping ([Category]) -> Void) {
 
-        guard let ingDictionary = ing as? [String: Any] else {
-            return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
-        }
+        let category = "Category"
+        var categoryArray: [Category] = []
 
-        guard let stpDictionary = stp as? [String: Any] else {
-            return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
-        }
+        databaseManager.fetch(recordType: category, predicate: nil, reference: nil, completion: { (record) -> Void in
 
-        // sort steps by numerical order
-        let sortedSteps = stpDictionary.sorted(by: {$0.0 < $1.0})
-        for element in ingDictionary {
-            ingredients.append((element.value as? String)!)
-        }
+            for category in record {
+                //swiftlint:disable force_cast
+                let name = category["name"] as! String
+                //swiftlint:enable force_cast
+                let reference = category.recordID
+                let newCategory = Category(name: name, reference: reference)
 
-        for element in sortedSteps {
-            guard let stp = element.value as? [String: Any] else {
-                print("nao rolou")
-                return Recipes(name: "", ingredients: [], time: "", rendiment: "", photo: "", steps: [])
+                categoryArray.append(newCategory)
             }
-            if let text = stp["Texto"] as? String {
 
-                let time = stp["Tempo"] as? Int
+            completion(categoryArray)
+        })
+    }
 
-                var newStep = Step()
+    func parseRecipes(predicateName: CKRecordID, completion: @escaping ([Recipe]) -> Void) {
 
-                newStep.text = text
-                newStep.time = time
+        let category = "Recipe"
+        let predicate = "category"
+        let reference = CKReference(recordID: predicateName, action: .deleteSelf)
 
-                steps.append(newStep)
+        databaseManager.fetch(recordType: category, predicate: predicate, reference: reference) { (record) -> Void in
+
+            var recipeArray: [Recipe] = []
+
+            for recipe in record {
+                //swiftlint:disable force_cast
+                let name = recipe["name"] as! String
+                //swiftlint:enable force_cast
+                let reference = recipe.recordID
+                let newRecipe = Recipe(name: name, reference: reference)
+                recipeArray.append(newRecipe)
+            }
+
+            completion(recipeArray)
+        }
+    }
+
+    func parseRecipeDetails(predicateName: CKRecordID, completion: @escaping (RecipeDetails) -> Void) {
+
+        let category = "RecipeDetails"
+        let predicate = "recipe"
+        let reference = CKReference(recordID: predicateName, action: .deleteSelf)
+
+        databaseManager.fetch(recordType: category, predicate: predicate, reference: reference) { (record) in
+
+            let recordValue = record[0]
+            //swiftlint:disable force_cast
+            let duration = recordValue["duration"] as! String
+            let portions = recordValue["portions"] as! String
+            let ingredients = recordValue["ingredients"] as! [String]
+
+            let recipeDetails = RecipeDetails(duration: duration, portions: portions, ingredients: ingredients)
+            //swiftlint:enable force_cast
+
+            completion(recipeDetails)
+        }
+    }
+
+    func parseStep(predicateName: CKRecordID, completion: @escaping ([Step]) -> Void) {
+
+        let category = "Step"
+        let predicate = "recipe"
+        let reference = CKReference(recordID: predicateName, action: .deleteSelf)
+
+        databaseManager.fetch(recordType: category, predicate: predicate, reference: reference) { (record) in
+
+            var stepsArray = [Step]()
+
+            for currentStep in record {
+
+                //swiftlint:disable force_cast
+                let stepText = currentStep["text"] as! String
+                let stepTime = currentStep["time"] as! Int?
+                //swiftlint:enable force_cast
+
+                let newStep = Step(text: stepText, time: stepTime)
+                stepsArray.append(newStep)
+            }
+
+            completion(stepsArray)
+        }
+    }
+
+     func parseImage(predicateName: CKRecordID, completion: @escaping (UIImage) -> Void) {
+
+        let category = "RecipeImage"
+        let predicate = "recipe"
+        let reference = CKReference(recordID: predicateName, action: .deleteSelf)
+
+        databaseManager.fetch(recordType: category, predicate: predicate, reference: reference) { (record) in
+
+            let singleRecord = record[0]
+            if let asset = singleRecord["image"] as? CKAsset, let data = try? Data(contentsOf: asset.fileURL) {
+                DispatchQueue.main.async {
+                    guard let image = UIImage(data: data) else { return }
+                    completion(image)
+                }
             }
         }
-
-        return Recipes(name: name!,
-                       ingredients: ingredients,
-                       time: time!,
-                       rendiment: rendiment!,
-                       photo: photo!,
-                       steps: steps)
     }
 }

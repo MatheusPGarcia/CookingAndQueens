@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class ViewController: UIViewController {
 
@@ -18,13 +19,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var highlightButton: UIButton!
 
-    var databaseManager: DatabaseService!
-    var objManager = ObjectsManager()
+    let databaseConnectivity = ParseManager()
 
-    var highlightRecipe: Recipes!
-    var recipes = [Recipes]()
+    var highlightRecipe: Recipe!
+    var highlightCategory: Category!
+    var recipes = [Recipe]()
     var categories = [Category]()
-    var rec: Recipes?
+    var rec: Recipe?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,38 +33,27 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        setupCategories(name: "Para impressionar as visitas",
-                        elements: ["Costela de cordeiro assada ao molho de hortelã", "Ratatouille"])
-        setupCategories(name: "Almoço requintado",
-                        elements: ["Sanduíche de Carne de Panela na Travessa", "Berinjela à parmegiana", "Rabada"])
-
-        databaseManager = DatabaseService.shared
-
         self.view.isUserInteractionEnabled = false
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
 
         if InternetConnection.checkCconnection() {
-            databaseManager.createRecipeObject(completion: { receivedRecipe in
 
-                //finished retrieving data from database
-                if receivedRecipe != nil {
-                    self.recipes = receivedRecipe!
+            setupCategories { () in
+                DispatchQueue.main.async {
                     self.view.isUserInteractionEnabled = true
                     self.activityIndicator.stopAnimating()
                     self.loadingView.isHidden = true
                     self.loadingLabel.isHidden = true
-                    self.categories = self.objManager.createCategories(self.recipes, self.categories)
                     self.tableView.reloadData()
                     self.setupHighlightRecipe()
                 }
-            })
+            }
         } else {
             activityIndicator.stopAnimating()
             self.loadingView.alpha = 0.99
             self.loadingLabel.text = "Sem conexão de Internet"
         }
-
     }
 
     @IBAction func highlightPressed(_ sender: Any) {
@@ -72,35 +62,76 @@ class ViewController: UIViewController {
 
     func setupHighlightRecipe() {
 
-        let search = "Torta de Frango"
-        let result = recipes.filter({ (rec) -> Bool in
-            rec.name.lowercased().contains(search.lowercased())
-        })
         highlightImage.layer.cornerRadius = 5
         highlightImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        highlightImage.image = setImage(url: result[0].photo)
-        hightlightLabel.text = result[0].name
-        highlightRecipe = result[0]
+
+        let reference = highlightCategory.reference
+
+        databaseConnectivity.parseRecipes(predicateName: reference) { (recipes) in
+            if let recipe = recipes.first {
+                DispatchQueue.main.async {
+                    self.hightlightLabel.text = recipe.name
+                    self.highlightRecipe = recipe
+
+                    self.setImage(recipe: recipe)
+                }
+            }
+        }
     }
 
-    func setImage(url: String) -> UIImage {
-        var data: Data
-        // swiftlint:disable force_try
+    func setImage(recipe: Recipe) {
 
-        let imgURL = URL(string: url)
-        data = try! Data(contentsOf: imgURL!)
-        let image = UIImage(data: data)
-        return image!
+        let reference = recipe.reference
+
+        self.databaseConnectivity.parseImage(predicateName: reference) { (image) in
+            self.highlightImage.image = image
+        }
     }
 
-    func setupCategories(name: String, elements: [String]) {
-        var category = Category()
+    private func setupCategories(completion: @escaping () -> Void) {
 
-        category.setValues(name, elements)
-        categories.append(category)
+        databaseConnectivity.parseCategories { (categoriesArray) in
+            for singleCategory in categoriesArray {
+                let name = singleCategory.name
+                let reference = singleCategory.reference
+
+                let newCategory = Category(name: name, reference: reference)
+
+                self.categories.append(newCategory)
+            }
+
+            let highlightName = "Destaque do dia"
+
+            guard let highlightCategory = self.categories.first(where: {$0.name == highlightName}) else { return }
+            self.highlightCategory = highlightCategory
+
+            guard let index = self.categories.index(where: {$0.name == highlightName}) else { return }
+            self.categories.remove(at: index)
+
+            completion()
+        }
     }
 
-    func goToDetails(recipe: Recipes) {
+    private func setupRecipies(_ category: Category, completion: @escaping ([Recipe]) -> Void) {
+
+        let categoryReference = category.reference
+        databaseConnectivity.parseRecipes(predicateName: categoryReference) { (recipesArray) in
+
+            var recipesObjects = [Recipe]()
+
+            for recipe in recipesArray {
+                let name = recipe.name
+                let reference = recipe.reference
+
+                let newRecipe = Recipe(name: name, reference: reference)
+                recipesObjects.append(newRecipe)
+            }
+
+            completion(recipesObjects)
+        }
+    }
+
+    func goToDetails(recipe: Recipe) {
         self.rec = recipe
         performSegue(withIdentifier: "recipeDetails", sender: nil)
     }
@@ -112,14 +143,15 @@ class ViewController: UIViewController {
     }
 }
 
-// swiftlint:disable force_cast
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //swiftlint:disable force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryCell
+        //swiftlint:enable force_cast
 
         cell.setup(category: self.categories[indexPath.section])
         cell.delegate = self
@@ -154,7 +186,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController: RecipeDelegate {
 
-    func presentData(recipe: Recipes) {
+    func presentData(recipe: Recipe) {
         goToDetails(recipe: recipe)
     }
 

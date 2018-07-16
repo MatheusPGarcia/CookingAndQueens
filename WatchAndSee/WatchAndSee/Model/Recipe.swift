@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import CloudKit
 
 struct Recipe {
 
     var name: String
-    var recordName: String
+    var reference: CKRecordID
 
-    init(name: String, recordName: String) {
+    init(name: String, reference: CKRecordID) {
         self.name = name
-        self.recordName = recordName
+        self.reference = reference
     }
 }
