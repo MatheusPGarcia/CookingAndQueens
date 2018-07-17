@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         let reference = recipe.reference
 
         self.databaseConnectivity.parseImage(predicateName: reference) { (image) in
-            self.highlightImage.image = image
+            self.highlightImage.image = image.image
         }
     }
 

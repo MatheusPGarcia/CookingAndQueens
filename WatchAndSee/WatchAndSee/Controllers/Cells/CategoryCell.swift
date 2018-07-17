@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RecipeDelegate: class {
-    func presentData(recipe: Recipes)
+    func presentData(recipe: Recipe)
 }
 
 class CategoryCell: UITableViewCell {
@@ -17,6 +17,11 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
 
     var category: Category?
+    var recipes = [Recipe]()
+    var images = [RecipeImage]()
+
+    let databaseConnectivity = ParseManager()
+
     weak var delegate: RecipeDelegate?
 
     override func awakeFromNib() {
@@ -28,22 +33,59 @@ class CategoryCell: UITableViewCell {
 
     func setup(category: Category) {
         self.category = category
+
+        let reference = category.reference
+        databaseConnectivity.parseRecipes(predicateName: reference) { (recipesArray) in
+            DispatchQueue.main.async {
+                self.recipes = recipesArray
+
+                for recipe in self.recipes {
+                    self.setupImage(recipe: recipe)
+                }
+
+                self.collectionView.reloadData()
+            }
+        }
+
         self.collectionView.reloadData()
+    }
+
+    func setupImage(recipe: Recipe) {
+
+        let reference = recipe.reference
+
+        databaseConnectivity.parseImage(predicateName: reference) { (imageObj) in
+            DispatchQueue.main.async {
+                self.images.append(imageObj)
+
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 
 extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  (self.category?.recipes.count)!
+        return  (self.recipes.count)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell",
                                                          for: indexPath) as? RecipeCell {
-            cell.recipeLabel.text = category?.recipes[indexPath.row].name
-            cell.recipeImage.image = setImage(url: (category?.recipes[indexPath.row].photo)!)
+
+            let index = indexPath.row
+
+            cell.recipeLabel.text = recipes[index].name
+
+            let reference = recipes[index].reference
+
+            if let imageToRecipe = self.images.first(where: {$0.reference == reference}) {
+                cell.recipeImage.image = imageToRecipe.image
+            }
+
             return cell
         }
 
@@ -55,20 +97,7 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.presentData(recipe: (self.category?.recipes[indexPath.row])!)
-    }
-
-    func setImage(url: String) -> UIImage {
-        var data = Data()
-
-        let imgURL = URL(string: url)
-        do {
-            try data = Data(contentsOf: imgURL!)
-        } catch {
-            print("Cannot load image")
-        }
-        let image = UIImage(data: data)
-        return image!
+        self.delegate?.presentData(recipe: (self.recipes[indexPath.row]))
     }
 }
 

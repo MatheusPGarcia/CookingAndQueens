@@ -44,31 +44,31 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         func session(_ session: WCSession,
                      didReceiveApplicationContext applicationContext: [String: Any]) {
 
-            DispatchQueue.main.async {
-                let parser = ParseWatch()
-                self.steps = parser.decodeInWatch(applicationContext)
-
-                var context: [String] = []
-                var controllers: [String] = []
-
-                for currentStep in self.steps {
-
-                    let text = currentStep.text
-                    context.append(text)
-
-                    let stepControl = String("StepInterfaceController")
-                    controllers.append(stepControl)
-
-                    if let time = currentStep.time {
-                        let timeValue = String(time)
-                        context.append(timeValue)
-
-                        let control = String("TimerInterfaceController")
-                        controllers.append(control)
-                    }
-                }
-                self.presentController(withNames: controllers, contexts: context)
-            }
+//            DispatchQueue.main.async {
+//                let parser = ParseWatch()
+//                self.steps = parser.decodeInWatch(applicationContext)
+//
+//                var context: [String] = []
+//                var controllers: [String] = []
+//
+//                for currentStep in self.steps {
+//
+//                    let text = currentStep.text
+//                    context.append(text)
+//
+//                    let stepControl = String("StepInterfaceController")
+//                    controllers.append(stepControl)
+//
+//                    if let time = currentStep.time {
+//                        let timeValue = String(time)
+//                        context.append(timeValue)
+//
+//                        let control = String("TimerInterfaceController")
+//                        controllers.append(control)
+//                    }
+//                }
+//                self.presentController(withNames: controllers, contexts: context)
+//            }
         }
 
     private override init() { }

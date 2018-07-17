@@ -103,7 +103,7 @@ class ParseManager: NSObject {
         }
     }
 
-     func parseImage(predicateName: CKRecordID, completion: @escaping (UIImage) -> Void) {
+     func parseImage(predicateName: CKRecordID, completion: @escaping (RecipeImage) -> Void) {
 
         let category = "RecipeImage"
         let predicate = "recipe"
@@ -115,7 +115,9 @@ class ParseManager: NSObject {
             if let asset = singleRecord["image"] as? CKAsset, let data = try? Data(contentsOf: asset.fileURL) {
                 DispatchQueue.main.async {
                     guard let image = UIImage(data: data) else { return }
-                    completion(image)
+
+                    let imageObj = RecipeImage(image: image, reference: predicateName)
+                    completion(imageObj)
                 }
             }
         }

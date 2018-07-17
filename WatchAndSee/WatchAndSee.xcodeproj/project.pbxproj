@@ -10,7 +10,6 @@
 		4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4200E12620DBE581001B3F8C /* ParseManager.swift */; };
 		423BF91920D98A80002021BA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF91820D98A80002021BA /* DatabaseService.swift */; };
 		423BF91B20D991A0002021BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 423BF91A20D9919F002021BA /* GoogleService-Info.plist */; };
-		423BF92420DA9BE9002021BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
 		42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C5F20DD6A4A00DD0400 /* CardView.swift */; };
 		42453C6420DEC88100DD0400 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C6320DEC88100DD0400 /* CategoryCell.swift */; };
 		42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42453C6720DF380E00DD0400 /* RecipeCell.swift */; };
@@ -21,7 +20,6 @@
 		42453C6F20E28B3D00DD0400 /* LouisGeorgeCafe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */; };
 		42453C7020E28B3D00DD0400 /* LouisGeorgeCafe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */; };
 		42501DB220E2A89100F67532 /* RecipesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42501DB120E2A89100F67532 /* RecipesDetailsViewController.swift */; };
-		42D609B320E31FF800349CB4 /* ObjectsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609B220E31FF800349CB4 /* ObjectsManager.swift */; };
 		42D609B520E321BC00349CB4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D609B420E321BC00349CB4 /* Category.swift */; };
 		42D609B720E3EB6A00349CB4 /* OleoScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D609B620E3EB6800349CB4 /* OleoScript-Bold.ttf */; };
 		42D609B920E3EBF700349CB4 /* OleoScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D609B820E3EBF600349CB4 /* OleoScript-Regular.ttf */; };
@@ -44,10 +42,13 @@
 		AE4F7EEF20D986A10050C176 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4F7EED20D986A10050C176 /* LaunchScreen.storyboard */; };
 		AE85D4E720E651C20037CBCC /* StepInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D4E620E651C20037CBCC /* StepInterfaceController.swift */; };
 		AEB0091120DD42810089224B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
+		AEBAD4E720FE5E9F00E7A7BD /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBAD4E420FE5E9F00E7A7BD /* RecipeImage.swift */; };
+		AEBAD4E820FE5E9F00E7A7BD /* RecipeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBAD4E520FE5E9F00E7A7BD /* RecipeDetails.swift */; };
+		AEBAD4E920FE5E9F00E7A7BD /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBAD4E620FE5E9F00E7A7BD /* Recipe.swift */; };
+		AEBAD4ED20FE643B00E7A7BD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBAD4EC20FE643B00E7A7BD /* CloudKit.framework */; };
 		AEBEC2CB20E693D10038EE62 /* TimerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEC2CA20E693D10038EE62 /* TimerInterfaceController.swift */; };
 		AEBEC2CD20E6B00A0038EE62 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEC2CC20E6B00A0038EE62 /* InternetConnection.swift */; };
 		AEFE4E5820E17ECE00D5688E /* ParseWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */; };
-		AEFE4E5920E1856800D5688E /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BF92320DA9BE9002021BA /* Recipes.swift */; };
 		AEFE4E5A20E1856D00D5688E /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB0091020DD42810089224B /* Step.swift */; };
 		F2772CF693FC58EC9D46F939 /* Pods_WatchAndSee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */; };
 /* End PBXBuildFile section */
@@ -99,14 +100,12 @@
 		4200E12620DBE581001B3F8C /* ParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
 		423BF91820D98A80002021BA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		423BF91A20D9919F002021BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		423BF92320DA9BE9002021BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		42453C5F20DD6A4A00DD0400 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		42453C6320DEC88100DD0400 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		42453C6720DF380E00DD0400 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		42453C6920E289FA00DD0400 /* LouisGeorgeCafeBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LouisGeorgeCafeBold.ttf; sourceTree = "<group>"; };
 		42453C6D20E28B3C00DD0400 /* LouisGeorgeCafe.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LouisGeorgeCafe.ttf; sourceTree = "<group>"; };
 		42501DB120E2A89100F67532 /* RecipesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailsViewController.swift; sourceTree = "<group>"; };
-		42D609B220E31FF800349CB4 /* ObjectsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsManager.swift; sourceTree = "<group>"; };
 		42D609B420E321BC00349CB4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		42D609B620E3EB6800349CB4 /* OleoScript-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OleoScript-Bold.ttf"; sourceTree = "<group>"; };
 		42D609B820E3EBF600349CB4 /* OleoScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OleoScript-Regular.ttf"; sourceTree = "<group>"; };
@@ -134,6 +133,12 @@
 		AE4F7EF020D986A20050C176 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE85D4E620E651C20037CBCC /* StepInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepInterfaceController.swift; sourceTree = "<group>"; };
 		AEB0091020DD42810089224B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		AEBAD4E420FE5E9F00E7A7BD /* RecipeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
+		AEBAD4E520FE5E9F00E7A7BD /* RecipeDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetails.swift; sourceTree = "<group>"; };
+		AEBAD4E620FE5E9F00E7A7BD /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		AEBAD4EA20FE63A200E7A7BD /* WatchAndSee Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchAndSee Watch Extension.entitlements"; sourceTree = "<group>"; };
+		AEBAD4EB20FE63D700E7A7BD /* WatchAndSee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchAndSee.entitlements; sourceTree = "<group>"; };
+		AEBAD4EC20FE643B00E7A7BD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AEBEC2CA20E693D10038EE62 /* TimerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInterfaceController.swift; sourceTree = "<group>"; };
 		AEBEC2CC20E6B00A0038EE62 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseWatch.swift; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2772CF693FC58EC9D46F939 /* Pods_WatchAndSee.framework in Frameworks */,
+				AEBAD4ED20FE643B00E7A7BD /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +170,6 @@
 			children = (
 				423BF91820D98A80002021BA /* DatabaseService.swift */,
 				4200E12620DBE581001B3F8C /* ParseManager.swift */,
-				42D609B220E31FF800349CB4 /* ObjectsManager.swift */,
 				AEFE4E5720E17ECE00D5688E /* ParseWatch.swift */,
 			);
 			path = Services;
@@ -184,9 +189,11 @@
 		423BF91E20D99710002021BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				423BF92320DA9BE9002021BA /* Recipes.swift */,
 				42D609B420E321BC00349CB4 /* Category.swift */,
 				AEB0091020DD42810089224B /* Step.swift */,
+				AEBAD4E620FE5E9F00E7A7BD /* Recipe.swift */,
+				AEBAD4E520FE5E9F00E7A7BD /* RecipeDetails.swift */,
+				AEBAD4E420FE5E9F00E7A7BD /* RecipeImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +230,7 @@
 		512218BC4A0570B0B03171AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AEBAD4EC20FE643B00E7A7BD /* CloudKit.framework */,
 				2E24E44CFB2E021E1A4E858A /* Pods_WatchAndSee.framework */,
 			);
 			name = Frameworks;
@@ -250,6 +258,7 @@
 		AE1C084720DACBAD00B0BB14 /* WatchAndSee Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AEBAD4EA20FE63A200E7A7BD /* WatchAndSee Watch Extension.entitlements */,
 				AE1C084820DACBAD00B0BB14 /* InterfaceController.swift */,
 				AEBEC2CA20E693D10038EE62 /* TimerInterfaceController.swift */,
 				AE85D4E620E651C20037CBCC /* StepInterfaceController.swift */,
@@ -287,6 +296,7 @@
 		AE4F7EE020D9869E0050C176 /* WatchAndSee */ = {
 			isa = PBXGroup;
 			children = (
+				AEBAD4EB20FE63D700E7A7BD /* WatchAndSee.entitlements */,
 				423BF92020D99749002021BA /* Supporting Files */,
 				423BF91C20D996D8002021BA /* Services */,
 				423BF91E20D99710002021BA /* Model */,
@@ -378,9 +388,19 @@
 					};
 					AE1C084220DACBAD00B0BB14 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					AE4F7EDD20D9869E0050C176 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -510,7 +530,6 @@
 				AE4D7F3520E56382001E60BE /* ParseWatch.swift in Sources */,
 				AE1C084920DACBAD00B0BB14 /* InterfaceController.swift in Sources */,
 				AE85D4E720E651C20037CBCC /* StepInterfaceController.swift in Sources */,
-				AEFE4E5920E1856800D5688E /* Recipes.swift in Sources */,
 				AEBEC2CB20E693D10038EE62 /* TimerInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,21 +538,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				423BF92420DA9BE9002021BA /* Recipes.swift in Sources */,
-				42D609B320E31FF800349CB4 /* ObjectsManager.swift in Sources */,
 				AE4F7EE420D9869F0050C176 /* ViewController.swift in Sources */,
 				AE4F7EEA20D9869F0050C176 /* WatchAndSee.xcdatamodeld in Sources */,
 				AEB0091120DD42810089224B /* Step.swift in Sources */,
 				AEBEC2CD20E6B00A0038EE62 /* InternetConnection.swift in Sources */,
 				42D609BB20E3F9AF00349CB4 /* RecipeDetailsCell.swift in Sources */,
+				AEBAD4E820FE5E9F00E7A7BD /* RecipeDetails.swift in Sources */,
 				4200E12720DBE581001B3F8C /* ParseManager.swift in Sources */,
 				42453C6820DF380E00DD0400 /* RecipeCell.swift in Sources */,
 				42453C6420DEC88100DD0400 /* CategoryCell.swift in Sources */,
+				AEBAD4E720FE5E9F00E7A7BD /* RecipeImage.swift in Sources */,
 				423BF91920D98A80002021BA /* DatabaseService.swift in Sources */,
 				AEFE4E5820E17ECE00D5688E /* ParseWatch.swift in Sources */,
 				42501DB220E2A89100F67532 /* RecipesDetailsViewController.swift in Sources */,
 				42453C6020DD6A4A00DD0400 /* CardView.swift in Sources */,
 				AE18F40020E527B6007DC404 /* WatchController.swift in Sources */,
+				AEBAD4E920FE5E9F00E7A7BD /* Recipe.swift in Sources */,
 				AE4F7EE220D9869E0050C176 /* AppDelegate.swift in Sources */,
 				42D609B520E321BC00349CB4 /* Category.swift in Sources */,
 			);
@@ -587,7 +607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = "WatchAndSee Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -609,7 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = "WatchAndSee Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -632,7 +652,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				IBSC_MODULE = WatchAndSee_Watch_Extension;
 				INFOPLIST_FILE = "WatchAndSee Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee.watchkitapp;
@@ -651,7 +671,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				IBSC_MODULE = WatchAndSee_Watch_Extension;
 				INFOPLIST_FILE = "WatchAndSee Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CookingAndQueens.WatchAndSee.watchkitapp;
@@ -788,8 +808,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = WatchAndSee/WatchAndSee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = WatchAndSee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -808,8 +829,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = WatchAndSee/WatchAndSee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7W6V69HBWC;
+				DEVELOPMENT_TEAM = 3W69VTQXGX;
 				INFOPLIST_FILE = WatchAndSee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -11,12 +11,12 @@ import WatchConnectivity
 
 class WatchController: NSObject {
 
-    func prepareToSendValue(recipe: Recipes) -> Bool {
-
-        let parseWatch = ParseWatch()
-        let data = parseWatch.sendToWatch(recipe: recipe)
-        return sendValue(data: data)
-    }
+//    func prepareToSendValue(recipe: Recipe) -> Bool {
+//
+//        let parseWatch = ParseWatch()
+//        let data = parseWatch.sendToWatch(recipe: recipe)
+//        return sendValue(data: data)
+//    }
 
     private func sendValue(data: [String: Any?]) -> Bool {
 
