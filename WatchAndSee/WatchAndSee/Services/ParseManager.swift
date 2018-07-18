@@ -91,7 +91,7 @@ class ParseManager: NSObject {
             for currentStep in record {
 
                 //swiftlint:disable force_cast
-                let stepText = currentStep["text"] as! String
+                let stepText = currentStep["description"] as! String
                 let stepTime = currentStep["time"] as! Int?
                 //swiftlint:enable force_cast
 
