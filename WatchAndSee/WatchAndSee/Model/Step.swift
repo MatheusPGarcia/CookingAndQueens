@@ -12,11 +12,13 @@ struct Step {
 
     var text: String
     var time: Int?
+    var order: Int
 
-    init(text: String, time: Int?) {
+    init(text: String, time: Int?, order: Int) {
 
         self.text = text
-
+        self.order = order
+        
         guard let timeValue = time else { return }
         self.time = timeValue
     }

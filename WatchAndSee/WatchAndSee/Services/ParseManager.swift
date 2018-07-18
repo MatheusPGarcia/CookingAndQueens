@@ -92,14 +92,15 @@ class ParseManager: NSObject {
 
                 //swiftlint:disable force_cast
                 let stepText = currentStep["description"] as! String
-                let stepTime = currentStep["time"] as! Int?
+                let stepTime = currentStep["duration"] as! Int?
+                let stepOrder = currentStep["stepOrder"] as! Int
                 //swiftlint:enable force_cast
 
-                let newStep = Step(text: stepText, time: stepTime)
+                let newStep = Step(text: stepText, time: stepTime, order: stepOrder)
                 stepsArray.append(newStep)
             }
 
-            completion(stepsArray)
+            completion(stepsArray.sorted(by: { $0.order < $1.order }))
         }
     }
 

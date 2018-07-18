@@ -25,7 +25,8 @@ class RecipesDetailsViewController: UIViewController {
     var recipeImageObj: RecipeImage?
     var sections = ["Ingredientes", "Modo de preparo"]
     var items = [[String]]()
-    var steps = [String]()
+    var steps = [Step]()
+    var stepsString = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,10 +77,11 @@ class RecipesDetailsViewController: UIViewController {
 
             for step in stepsArray {
                 let text = step.text
-                self.steps.append(text)
+                self.stepsString.append(text)
             }
 
-            self.items.append(self.steps)
+            self.items.append(self.stepsString)
+            self.steps = stepsArray
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -103,36 +105,33 @@ class RecipesDetailsViewController: UIViewController {
 
         let watchController = WatchController()
 
-        if let recipe = recipe {
+        if watchController.prepareToSendValue(steps: steps) {
 
-//            if watchController.prepareToSendValue(recipe: recipe) {
-//
-//                let alertController = UIAlertController(title: "Sucesso",
-//                                                        message: "Verifique seu Apple Watch",
-//                                                        preferredStyle: .alert)
-//
-//                let actionOk = UIAlertAction(title: "OK",
-//                                            style: .default,
-//                                            handler: nil)
-//
-//                alertController.addAction(actionOk)
-//
-//                self.present(alertController, animated: true, completion: nil)
-//
-//            } else {
-//
-//                let alertController = UIAlertController(title: "Erro",
-//                                                        message: "",
-//                                                        preferredStyle: .alert)
-//
-//                let actionOk = UIAlertAction(title: "OK",
-//                                             style: .default,
-//                                             handler: nil)
-//
-//                alertController.addAction(actionOk)
-//
-//                self.present(alertController, animated: true, completion: nil)
-//            }
+            let alertController = UIAlertController(title: "Sucesso",
+                                                    message: "Verifique seu Apple Watch",
+                                                    preferredStyle: .alert)
+
+            let actionOk = UIAlertAction(title: "OK",
+                                        style: .default,
+                                        handler: nil)
+
+            alertController.addAction(actionOk)
+
+            self.present(alertController, animated: true, completion: nil)
+
+        } else {
+
+            let alertController = UIAlertController(title: "Erro",
+                                                    message: "",
+                                                    preferredStyle: .alert)
+
+            let actionOk = UIAlertAction(title: "OK",
+                                         style: .default,
+                                         handler: nil)
+
+            alertController.addAction(actionOk)
+
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 }
