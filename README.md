@@ -1,7 +1,7 @@
 
 ## **Chef Yourself**
 
-**Descrição do projeto:**
+**Project description:**
 Chef Yourself is an innovative recipe app made for every cook, no matter how experienced! Its main goal is to simplify your work on the kitchen by providing the following tools:
 
 * Timer: Never let anything burn again! Easily set a timer that will remind you of anything you have left to cook!
@@ -10,7 +10,7 @@ Chef Yourself is an innovative recipe app made for every cook, no matter how exp
 
 Bring your cooking skills to a whole new level with Chef Yourself!
 
-## Membros
+## Members
 
 * **Larissa Ganaha**
     * GitHub: larissaganaha
